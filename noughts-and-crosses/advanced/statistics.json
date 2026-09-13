@@ -1,0 +1,18 @@
+{
+    "overall": {
+        "draws": 2,
+        "total_games": 10
+    },
+    "player1": {
+        "losses": 1,
+        "name": "Noah",
+        "piece": "N",
+        "wins": 7
+    },
+    "player2": {
+        "losses": 7,
+        "name": "Dominic",
+        "piece": "D",
+        "wins": 1
+    }
+}
