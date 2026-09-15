@@ -1,0 +1,39 @@
+{
+  "name": "Toastoku Discord Bot",
+  "version": "1.0.0",
+  "description": "A Sudoku Game Bot themed around Toasts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sparked Host",
+  "license": "ISC",
+  "dependencies": {
+    "@sudokukit/core": "^0.0.8",
+    "@top-gg/sdk": "^3.1.6",
+    "bignumber.js": "^9.3.1",
+    "buffer": "^6.0.3",
+    "canvas": "^3.0.1",
+    "common-tags": "^1.8.2",
+    "dis-warden": "^1.0.0",
+    "discord": "^0.8.2",
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "fluident": "^1.0.0",
+    "gamertag-forge": "^1.0.1",
+    "html": "^1.0.0",
+    "mongoose": "^8.15.2",
+    "node-cron": "^4.2.1",
+    "node-fetch": "^2.7.0",
+    "path": "^0.12.7",
+    "sudoku": "^0.0.3",
+    "sudoku-gen": "^1.0.2",
+    "topgg-autoposter": "^2.0.2",
+    "tweetnacl": "^1.0.3",
+    "twemoji": "^14.0.2",
+    "twemoji-parser": "^14.0.0",
+    "xp-flow": "^2.1.0-STABLE"
+  }
+}

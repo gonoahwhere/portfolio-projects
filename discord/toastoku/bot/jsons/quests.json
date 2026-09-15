@@ -1,0 +1,268 @@
+[
+    {
+        "itemId": "quests.dailyallweek",
+        "name": "Complete 7 Daily Games",
+        "reward": "x6 {hints}   100x {toast}",
+        "description": "Complete the daily puzzle for 7 days.",
+        "total": 7
+    },
+    {
+        "itemId": "quests.multiplayersolves3",
+        "name": "Solve 3 Multiplayer Games",
+        "reward": "x2 {hints}",
+        "description": "Solve 3 games in multiplayer mode.",
+        "total": 3
+    },
+    {
+        "itemId": "quests.solve50",
+        "name": "Solve 50 Puzzles",
+        "reward": "100x {toast}   150x {expadd}",
+        "description": "Solve 50 Sudoku puzzles of any difficulty/theme/mode.",
+        "total": 50
+    },
+    {
+        "itemId": "quests.usehints15",
+        "name": "Use 15 Hints",
+        "reward": "25x {toast}",
+        "description": "Use hints you've collected within your games.",
+        "total": 15
+    },
+    {
+        "itemId": "quests.solve25veryeasy",
+        "name": "Solve 25 Very Easy games",
+        "reward": "250x {toast}   100x {expadd}",
+        "description": "Solve 25 games on the Very Easy difficulty.",
+        "total": 25
+    },
+    {
+        "itemId": "quests.solve25easy",
+        "name": "Solve 25 Easy games",
+        "reward": "300x {toast}   150x {expadd}   1x {hints}",
+        "description": "Solve 25 games on the Easy difficulty.",
+        "total": 25
+    },
+    {
+        "itemId": "quests.solve25medium",
+        "name": "Solve 25 Medium games",
+        "reward": "350x {toast}   200x {expadd}   2x {hints}",
+        "description": "Solve 25 games on the Medium difficulty.",
+        "total": 25
+    },
+    {
+        "itemId": "quests.solve25hard",
+        "name": "Solve 25 Hard games",
+        "reward": "400x {toast}   250x {expadd}   3x {hints}",
+        "description": "Solve 25 games on the Hard difficulty.",
+        "total": 25
+    },
+    {
+        "itemId": "quests.solve25veryhard",
+        "name": "Solve 25 Very Hard games",
+        "reward": "450x {toast}   300x {expadd}   4x {hints}",
+        "description": "Solve 25 games on the Very Hard difficulty.",
+        "total": 25
+    },
+    {
+        "itemId": "quests.solve25expert",
+        "name": "Solve 25 Expert games",
+        "reward": "500x {toast}   350x {expadd}   5x {hints}",
+        "description": "Solve 25 games on the Expert difficulty.",
+        "total": 25
+    },
+    {
+        "itemId": "quests.solve100",
+        "name": "Solve 100 Puzzles",
+        "reward": "250x {toast}   300x {expadd}",
+        "description": "Solve 50 Sudoku puzzles of any difficulty/theme/mode.",
+        "total": 50
+    },
+    {
+        "itemId": "quests.daily3",
+        "name": "Complete 3 Daily Games",
+        "reward": "x3 {hints}   50x {toast}",
+        "description": "Complete the daily puzzle for 3 days.",
+        "total": 3
+    },
+    {
+        "itemId": "quests.custom5",
+        "name": "Play 5 Different Themes",
+        "reward": "100x {toast}   25x {expadd}",
+        "description": "Play games using 5 different themes.",
+        "total": 5
+    },
+    {
+        "itemId": "quests.daily1",
+        "name": "Complete 1 Daily Game",
+        "reward": "x1 {hints}   15x {toast}",
+        "description": "Complete the daily puzzle for 1 day.",
+        "total": 1
+    },
+    {
+        "itemId": "quests.earn1000toast",
+        "name": "Earn 1,000 Toast",
+        "reward": "150x {expadd}",
+        "description": "Earn 1,000 toast from playing Sudoku.",
+        "total": 1000
+    },
+    {
+        "itemId": "quests.collect10hints",
+        "name": "Collect 10 Hints",
+        "reward": "150x {toast}",
+        "description": "Obtain 10 new hints this week from quests/games/voting.",
+        "total": 10
+    },
+    {
+        "itemId": "quests.solve15hints",
+        "name": "Solve 15 Games Using At Least 1 Hint",
+        "reward": "150x {toast}   75x {expadd}",
+        "description": "Solve 15 puzzles where you used at least one hint.",
+        "total": 15
+    },
+    {
+        "itemId": "quests.endearly5",
+        "name": "End 5 Games Early",
+        "reward": "25x {toast}",
+        "description": "Decide to end 5 Sudoku games early this week.",
+        "total": 5
+    },
+    {
+        "itemId": "quests.solve5themestoastie",
+        "name": "Solve 5 Games With the Toastie Theme",
+        "reward": "250x {toast}   1x {hints}",
+        "description": "Solve 5 Sudoku puzzles using the Toastie theme.",
+        "total": 5
+    },
+    {
+        "itemId": "quests.solve25themestoastie",
+        "name": "Solve 25 Games With the Toastie Theme",
+        "reward": "500x {toast}   2x {hints}",
+        "description": "Solve 25 Sudoku puzzles using the Toastie theme.",
+        "total": 25
+    },
+    {
+        "itemId": "quests.solve50themestoastie",
+        "name": "Solve 50 Games With the Toastie Theme",
+        "reward": "750x {toast}   4x {hints}",
+        "description": "Solve 50 Sudoku puzzles using the Toastie theme.",
+        "total": 50
+    },
+    {
+        "itemId": "quests.solve100themestoastie",
+        "name": "Solve 100 Games With the Toastie Theme",
+        "reward": "1500x {toast}   8x {hints}",
+        "description": "Solve 100 Sudoku puzzles using the Toastie theme.",
+        "total": 100
+    },
+    {
+        "itemId": "quests.earn500exp",
+        "name": "Earn 500 EXP",
+        "reward": "150x {toast}",
+        "description": "Accumulate a total of 500 experience points this week.",
+        "total": 500
+    },
+    {
+        "itemId": "quests.multiplayersolves15",
+        "name": "Solve 15 Multiplayer Games",
+        "reward": "x3 {hints}   250x {toast}",
+        "description": "Solve 3 games in multiplayer mode.",
+        "total": 3
+    },
+    {
+        "itemId": "quests.earn5000toast",
+        "name": "Earn 5,000 Toast",
+        "reward": "550x {expadd}",
+        "description": "Earn 5,000 toast from playing Sudoku",
+        "total": 500
+    },
+    {
+        "itemId": "quests.collect25hints",
+        "name": "Collect 25 Hints",
+        "reward": "300x {toast}",
+        "description": "Obtain 25 new hints this week from quests/games/voting.",
+        "total": 25
+    },
+    {
+        "itemId": "quests.solve15themesfaces",
+        "name": "Solve 15 Games With the Faces Theme",
+        "reward": "150x {toast}   2x {hints}",
+        "description": "Solve 15 Sudoku puzzles using the Toastie theme.",
+        "total": 15
+    },
+    {
+        "itemId": "quests.solve15themescolourblind",
+        "name": "Solve 15 Games With the Colourblind Theme",
+        "reward": "150x {toast}   2x {hints}",
+        "description": "Solve 15 Sudoku puzzles using the Colourblind theme.",
+        "total": 15
+    },
+    {
+        "itemId": "quests.solve15themesanimals",
+        "name": "Solve 15 Games With the Amimals Theme",
+        "reward": "150x {toast}   2x {hints}",
+        "description": "Solve 15 Sudoku puzzles using the Animals theme.",
+        "total": 15
+    },
+    {
+        "itemId": "quests.solve15themestransport",
+        "name": "Solve 15 Games With the Transport Theme",
+        "reward": "150x {toast}   2x {hints}",
+        "description": "Solve 15 Sudoku puzzles using the Transport theme.",
+        "total": 15
+    },
+    {
+        "itemId": "quests.solve30themesfaces",
+        "name": "Solve 30 Games With the Faces Theme",
+        "reward": "300x {toast}   4x {hints}",
+        "description": "Solve 30 Sudoku puzzles using the Toastie theme.",
+        "total": 30
+    },
+    {
+        "itemId": "quests.solve30themescolourblind",
+        "name": "Solve 30 Games With the Colourblind Theme",
+        "reward": "300x {toast}   4x {hints}",
+        "description": "Solve 30 Sudoku puzzles using the Colourblind theme.",
+        "total": 30
+    },
+    {
+        "itemId": "quests.solve30themesanimals",
+        "name": "Solve 30 Games With the Amimals Theme",
+        "reward": "300x {toast}   4x {hints}",
+        "description": "Solve 30 Sudoku puzzles using the Animals theme.",
+        "total": 30
+    },
+    {
+        "itemId": "quests.solve30themestransport",
+        "name": "Solve 30 Games With the Transport Theme",
+        "reward": "300x {toast}   4x {hints}",
+        "description": "Solve 30 Sudoku puzzles using the Transport theme.",
+        "total": 30
+    },
+    {
+        "itemId": "quests.solve45themesfaces",
+        "name": "Solve 45 Games With the Faces Theme",
+        "reward": "450x {toast}   6x {hints}",
+        "description": "Solve 45 Sudoku puzzles using the Toastie theme.",
+        "total": 45
+    },
+    {
+        "itemId": "quests.solve45themescolourblind",
+        "name": "Solve 45 Games With the Colourblind Theme",
+        "reward": "450x {toast}   6x {hints}",
+        "description": "Solve 45 Sudoku puzzles using the Colourblind theme.",
+        "total": 45
+    },
+    {
+        "itemId": "quests.solve45themesanimals",
+        "name": "Solve 45 Games With the Amimals Theme",
+        "reward": "450x {toast}   6x {hints}",
+        "description": "Solve 45 Sudoku puzzles using the Animals theme.",
+        "total": 45
+    },
+    {
+        "itemId": "quests.solve45themestransport",
+        "name": "Solve 45 Games With the Transport Theme",
+        "reward": "450x {toast}   6x {hints}",
+        "description": "Solve 45 Sudoku puzzles using the Transport theme.",
+        "total": 45
+    }
+]

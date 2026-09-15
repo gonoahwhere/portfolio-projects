@@ -1,0 +1,46 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.local
+.env.*.local
+.DS_Store
+**/.DS_Store
+
+# Editor directories and files
+.vscode/*
+/.vscode
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Bots
+*.txt
+*cleanup-build.js
+*package-lock.json
+*tsconfig.json
+miscUtils
+config
+fonts
+*deploy-commands.js
+*guildDeploy.js
+*globalDeploy.js
+*deploy.ts
+*config.ts
+*cleanup.ts
+*config.js

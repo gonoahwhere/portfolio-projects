@@ -1,0 +1,27 @@
+const { contextBridge, ipcRenderer } = require('electron');
+
+contextBridge.exposeInMainWorld('electronAPI', {
+    platform: process.platform,
+    username: process.env.USERNAME || process.env.USER || 'user',
+    hostname: process.env.COMPUTERNAME || process.env.HOSTNAME || 'pc',
+    readFile: (filePath) => ipcRenderer.invoke('read-file', filePath),
+    writeFile: (filePath, content) => ipcRenderer.invoke('write-file', filePath, content),
+    onMenuAction: (callback) => ipcRenderer.on('menu-action', (event, action, ...args) => callback(action, ...args)),
+    saveFileDialog: (content) => ipcRenderer.invoke('save-file-dialog', content),
+    getHomeDir: () => ipcRenderer.invoke('get-home-dir'),
+    sendMenuAction: (action, ...args) => ipcRenderer.send('menu-action-from-renderer', action, ...args),
+    openFileDialog: () => ipcRenderer.invoke('open-file-dialog'),
+    openFolderDialog: () => ipcRenderer.invoke('open-folder-dialog'),
+    readDirectory: (folderPath) => ipcRenderer.invoke('read-directory', folderPath),
+    app: () => ipcRenderer.invoke('get-app-version'),
+    spawnTerminal: () => ipcRenderer.invoke('spawn-terminal'),
+    terminalInput: (input) => ipcRenderer.invoke('terminal-input', input),
+    terminalResize: (cols, rows) => ipcRenderer.invoke('terminal-resize', cols, rows),
+    killTerminal: () => ipcRenderer.invoke('kill-terminal'),
+    openExternalTerminal: () => ipcRenderer.invoke('open-external-terminal'),
+    onTerminalData: (callback) => ipcRenderer.on('terminal-data', (event, data) => callback(data)),
+    saveState: (state) => ipcRenderer.invoke('save-state', state),
+    loadState: () => ipcRenderer.invoke('load-state'),
+    onAppClosing: (callback) => ipcRenderer.on('app-closing', (_, shouldRestoreSession) => callback(shouldRestoreSession)),
+    confirmClose: () => ipcRenderer.invoke('confirm-close'),
+});

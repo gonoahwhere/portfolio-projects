@@ -1,0 +1,56 @@
+.tab-dirty-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 10px;
+    height: 10px;
+    font-size: 20px;
+    color: #e8748a;
+    margin-right: 0px;
+    flex-shrink: 0;
+}
+
+.tab-close {
+    cursor: pointer;
+    opacity: 0.45;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    margin-left: 4px;
+    flex-shrink: 0;
+    transition: opacity 0.15s, background 0.15s;
+}
+
+.tab-close:hover {
+    opacity: 1;
+    background-color: rgba(244, 135, 113, 0.2);
+    color: #f48771;
+}
+
+.tab-close:active {
+    transform: scale(0.85);
+}
+
+.tab-label {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.workspace-dirty-dot {
+    margin-left: auto;
+    color: #e8748a;
+    font-size: 20px;
+    flex-shrink: 0;
+}

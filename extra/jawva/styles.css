@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Geo', sans-serif;
+}
+
+body {
+    font-family: 'Geo', sans-serif;
+    background: #1e1e1e;
+    color: #e0e0e0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: #252526;
+    padding: 10px 20px;
+    border-bottom: 1px solid #3e3e42;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 8px 16px;
+    background: #e8748a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+    font-family: 'Geo', sans-serif;
+}
+
+button:hover {
+    background: #c95670;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 250px;
+    background: #252526;
+    border-right: 1px solid #3e3e42;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #888;
+    margin: 10px 0 5px;
+    padding-left: 5px;
+    font-weight: 400;
+}
+
+.file-input {
+    width: 100%;
+    padding: 8px;
+    background: #3e3e42;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.editor-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+#editor {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.status-bar {
+    background: #252526;
+    padding: 8px 20px;
+    font-size: 18px;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+    border-top: none;
+    box-shadow: none;
+}
+
+.file-item {
+    padding: 8px 10px;
+    margin: 2px 0;
+    background: #2d2d30;
+    border-radius: 4px;
+    cursor: pointer;
+    word-break: break-all;
+    font-size: 12px;
+    transition: background 0.2s;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-item:hover {
+    background: #3e3e42;
+}
+
+.file-item-close {
+    opacity: 0;
+    font-size: 16px;
+    line-height: 1;
+    color: #888;
+    padding: 0 2px;
+    border-radius: 3px;
+    transition: opacity 0.15s, color 0.15s;
+}
+
+.file-item:hover .file-item-close {
+    opacity: 1;
+}
+
+.file-item-close:hover {
+    color: #e8748a;
+}
+
+.terminal-divider {
+    width: 100%;
+    height: 4px;
+    background: #3e3e42;
+    cursor: row-resize;
+    user-select: none;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.terminal-divider:hover,
+.terminal-divider.dragging {
+    background: #e8748a;
+}
+
+.terminal-container {
+    flex: 0 0 200px;
+    display: flex;
+    flex-direction: column;
+    background: #1e1e1e;
+    overflow: hidden;
+    min-height: 100px;
+    max-height: 600px;
+    border-top: none;
+    box-shadow: none;
+}
+
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: #252526;
+    border-bottom: 1px solid #3e3e42;
+    font-size: 18px;
+    color: #d4d4d4;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    user-select: none;
+    font-family: 'Geo', sans-serif;
+}
+
+.terminal-toggle {
+    all: unset;
+    opacity: 0.8;
+    font-size: 16px;
+    line-height: 1;
+    color: #888;
+    padding: 0 2px;
+    border-radius: 3px;
+    transition: opacity 0.15s, color 0.15s;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.terminal-toggle:hover {
+    color: #e8748a;
+    opacity: 1;
+}
+
+#terminal {
+    flex: 1;
+    overflow: hidden;
+    padding: 8px;
+    font-size: 13px;
+}
+
+.xterm {
+    font-family: 'Geo', sans-serif;
+    font-size: 13px;
+}
+
+.xterm-screen {
+    background: #1e1e1e;
+}
+
+.xterm-cursor {
+    border-left: 2px solid #e8748a;
+}
+
+.xterm-dom-renderer-owner-1 .xterm-rows {
+    font-family: unset !important;
+}
+
+.xterm-viewport::-webkit-scrollbar {
+    display: none;
+}
+
+.xterm-viewport {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}

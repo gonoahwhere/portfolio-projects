@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="tabs.css">
+        <link rel="stylesheet" href="workspace-styles.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.2.1/css/xterm.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Short+Stack&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Geo:ital@0;1&display=swap" rel="stylesheet">
+        <title>Jawva</title>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Jawva 🦈</h1>
+            <div class="button-group">
+                <button onclick="newFile()">New File</button>
+                <button onclick="openFile()">Open File</button>
+                <button onclick="openFolder()">Open Folder</button>
+                <button onclick="saveFile()">Save File</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="sidebar">
+                <h2>File Explorer</h2>
+                <div id="file-list"></div>
+            </div>
+
+            <div class="main-content">
+                <div class="editor-container">
+                    <div id="editor"></div>
+                </div>
+
+                <!-- Draggable divider -->
+                <div class="terminal-divider" id="terminalDivider"></div>
+
+                <!-- Terminal -->
+                <div class="terminal-container" id="terminalContainer">
+                    <div class="terminal-header">
+                        <span>Jawva's Integrated Terminal</span>
+                        <span class="terminal-toggle" onclick="toggleTerminal()" title="Close Terminal">×</span>
+                    </div>
+                    <div id="terminal"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <span id="status">Ready</span>
+            <span id="line-info">Ln 1, Col 1</span>
+        </div>
+        
+        <!-- xTerm JS -->
+        <script src="https://cdn.jsdelivr.net/npm/xterm@5.2.1/lib/xterm.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.8.0/lib/xterm-addon-fit.min.js"></script>
+        
+        <!-- Load Monaco Editor from CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.50.0/min/vs/loader.min.js"></script>
+
+        <!-- Load App Logic -->
+        <script src="renderer.js"></script>
+    </body>
+</html>
