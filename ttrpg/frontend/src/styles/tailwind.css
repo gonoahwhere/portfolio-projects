@@ -1,0 +1,25 @@
+/* TAILWIND */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.rounded-small {
+  border-radius: var(--heroui-radius-small);
+  border: none;
+}
+
+.step1 {
+  width: 760px !important;
+}
+
+.step2 {
+  width: 500px !important;
+}
+
+.step3 {
+  width: 375px !important;
+}
+
+.button-border {
+  border: none
+} 
