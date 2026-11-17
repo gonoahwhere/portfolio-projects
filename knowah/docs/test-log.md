@@ -31,6 +31,7 @@
 - Expected: every earlier test still passes after each change
 - Run 1: after the menu layout change, TC01 to TC03 pass (A5-regression)
 - Run 2: after adding Item list screen, TC01 to TC03 and TC05 pass (A8-regression)
+- Run 3: after adding navigation, TC01 to TC03, TC05 and TC06 pass (A11-regression)
 - Repeat after each new screen or feature
 
 ## TC05: Item list shows the title of each item
@@ -47,4 +48,4 @@
 - Test file: test/screens/navigation_test.dart
 - Expected: tapping 'Side-Scroller' on the Menu shows the Item list screen
 - Failed first (Red): A9-nav-red
-- Passes now (Green): (not built yet)
+- Passes now (Green): A10-nav-green

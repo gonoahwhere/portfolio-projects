@@ -6,6 +6,10 @@ import 'package:knowah/themes/app_colours.dart';
 import 'package:knowah/themes/effects.dart';
 import 'package:knowah/widgets/button_3d.dart';
 
+// The Item and the screen we are moving to
+import 'package:knowah/models/item.dart';
+import 'package:knowah/screens/item_list_screen.dart';
+
 // The Menu is the first screen the user sees
 // StatelessWidget means it never changes once it is drawn
 class MenuScreen extends StatelessWidget {
@@ -122,19 +126,19 @@ class MenuScreen extends StatelessWidget {
                                                 // Example games for Recent Projects
                                                 Button3D(
                                                     label: 'Side-Scroller',
-                                                    onPressed: () {},
+                                                    onPressed: () => _openProject(context),
                                                 ),
                                                 const SizedBox(height: 14),
 
                                                 Button3D(
                                                     label: 'Card Battler',
-                                                    onPressed: () {},
+                                                    onPressed: () => _openProject(context),
                                                 ),
                                                 const SizedBox(height: 14),
 
                                                 Button3D(
                                                     label: 'Maze Runner',
-                                                    onPressed: () {},
+                                                    onPressed: () => _openProject(context),
                                                 ),
                                                 const SizedBox(height: 14),
                                             ],
@@ -146,6 +150,26 @@ class MenuScreen extends StatelessWidget {
                     ),
                 ),
             )
+        );
+    }
+
+    // Moves to the Item list for a project
+    // The items are placeholders for now, until the SQLite Database is connected
+    void _openProject(BuildContext context) {
+        // Navigator.push moves to a new screen
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                // The screen to show
+                builder: (context) => ItemListScreen(
+                    items: [
+                        Item(title: 'Double Jump'),
+                        Item(title: 'Level 2'),
+                        Item(title: 'Slime Enemy'),
+                        Item(title: 'Character floats'),
+                    ],
+                ),
+            ),
         );
     }
 }
