@@ -9,7 +9,7 @@ import 'package:knowah/screens/menu_screen.dart';
 
 void main() {
     // TC03: the menu must show the 2 required buttons
-    testWidgets('menu shows New Project and Open Project buttons', (tester) async {
+    testWidgets('TC03: Main menu shows New Project and Open Project buttons', (tester) async {
         // Draw the screen inside a minimal app, like a pretend phone
         await tester.pumpWidget(const MaterialApp(home: MenuScreen()));
 

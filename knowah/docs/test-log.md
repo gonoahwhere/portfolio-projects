@@ -1,13 +1,34 @@
 # KNOWAH Test Log
 
 ## TC01: Empty title is rejected
-- Failed first: A1-item-red
-- Passes now: A2-item-green
+- Type: Unit
+- Category: Input
+- Test file: test/models/item_test.dart
+- Expected: creating an Item with an empty title throws an error
+- Failed first (Red): A1-item-red
+- Passes now (Green): A2-item-green
 
 ## TC02: Title over 80 characters is rejected
-- Failed first: A1-item-red
-- Passes now: A2-item-green
+- Type: Unit
+- Category: Input
+- Test file: test/models/item_test.dart
+- Expected creating an Item with a title over 80 characters throws an error
+- Failed first (Red): A1-item-red
+- Passes now (Green): A2-item-green
 
-## TC03: Menu shows the 2 buttons
-- Failed first: A3-menu-red
-- Passes. now: not built yet
+## TC03: Menu shows the 2 project buttons
+- Type: Acceptance
+- Category: Visual
+- Test file: test/screens/menu_screen_test.dart
+- Expected: the Menu screen shows '+ New Project' and 'Open Project'
+- Failed first (Red): A3-menu-red
+- Passes now (Green): A4-menu-green
+
+## TC04: Earlier tests still pass after the Menu layout change
+- Type: Regression
+- Category: System Status
+- Test file: all files in test/
+- Change made: Menu changed to a two column layout on PC
+- Expected: TC01, TC02 and TC03 all still pass
+- Result: all tests pass (A5-regression)
+- Repeat after each new screen or feature
