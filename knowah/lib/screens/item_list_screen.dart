@@ -4,8 +4,9 @@ import 'package:material_ui/material_ui.dart';
 // The Item made in another file
 import 'package:knowah/models/item.dart';
 
-// The 3D box
+// The 3D box and button
 import 'package:knowah/widgets/panel_3d.dart';
+import 'package:knowah/widgets/button_3d.dart';
 
 // The Item list shows every item in the project
 // StatelessWidget means it never changes once it is drawn
@@ -29,6 +30,22 @@ class ItemListScreen extends StatelessWidget {
                     // so without this the edges would be sliced off
                     padding: const EdgeInsets.only(right: 5, bottom: 5),
                     children: [
+                        // Bkac button, in the top left
+                        // Align + SizedBox stop the button stretching the full width
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: SizedBox(
+                                width: 120,
+                                child: Button3D(
+                                    label: 'Back',
+                                    // Navigator.pop closes this screen and goes back
+                                    onPressed: () => Navigator.pop(context),
+                                ),
+                            ),
+                        ),
+                        // Space between the button and the first row
+                        const SizedBox(height: 20),
+                        
                         // Makes one row for every item in the list
                         for (final item in items) _itemRow(item),
                     ],
