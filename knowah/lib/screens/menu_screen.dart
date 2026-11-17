@@ -1,4 +1,4 @@
-// Imports Flutter's ready-made building blocks (buttons, text, screens)
+// Imports Flutter's ready-made building blocks
 import 'package:material_ui/material_ui.dart';
 
 // Knowahs colours, the 3D text helper and the 3D button

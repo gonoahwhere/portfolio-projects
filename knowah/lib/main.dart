@@ -1,4 +1,4 @@
-// Imports Flutter's ready-made building blocks (buttons, text, screens)
+// Imports Flutter's ready-made building blocks
 import 'package:material_ui/material_ui.dart';
 
 // The Menu screen from lib/screens

@@ -13,7 +13,7 @@ import 'package:knowah/screens/item_list_screen.dart';
 void main() {
     // TC05: the list screen must show the title of every item it is given
     testWidgets('TC05: Item list shows the title of each item', (tester) async {
-        // Two pretend itemsto show on the screen
+        // Two pretend items to show on the screen
         final items = [
             Item(title: 'Double Jump'),
             Item(title: 'Slime Enemy'),

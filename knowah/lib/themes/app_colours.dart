@@ -16,6 +16,9 @@ class AppColours {
     // Quite accent colour (subheadings, secondary buttons);
     static const Color textDim = Color(0xFF8A90B3);
 
+    // Faint border for panels and list rows
+    static const Color border = Color(0x33E7EAF6);
+
     // Shadow colours for the 3D effect
     // These are solid (not see-through) on purpose due to stacked
     // see-through shadows overlap and show stripes where they cross

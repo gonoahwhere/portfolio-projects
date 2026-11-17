@@ -28,9 +28,9 @@
 - Type: Regression
 - Category: System Status
 - Test file: all files in test/
-- Change made: Menu changed to a two column layout on PC
-- Expected: TC01, TC02 and TC03 all still pass
-- Result: all tests pass (A5-regression)
+- Expected: every earlier test still passes after each change
+- Run 1: after the menu layout change, TC01 to TC03 pass (A5-regression)
+- Run 2: after adding Item list screen, TC01 to TC03 and TC05 pass (A8-regression)
 - Repeat after each new screen or feature
 
 ## TC05: Item list shows the title of each item
@@ -39,4 +39,12 @@
 - Test file: test/screens/item_list_screen_test.dart
 - Expected: the Item list screen shows the title of every item it is given
 - Failed first (Red): A6-itemlist-red
+- Passes now (Green): A7-itemlist-green
+
+## TC06: Tapping a recent project button opens the Item list
+- Type: Acceptance
+- Category: Input
+- Test file: test/screens/navigation_test.dart
+- Expected: tapping 'Side-Scroller' on the Menu shows the Item list screen
+- Failed first (Red): A9-nav-red
 - Passes now (Green): (not built yet)
