@@ -49,3 +49,11 @@
 - Expected: tapping 'Side-Scroller' on the Menu shows the Item list screen
 - Failed first (Red): A9-nav-red
 - Passes now (Green): A10-nav-green
+
+## TC07: Back button returns to the Menu
+- Type: Acceptance
+- Category: Input
+- Test file: test/screens/navigation_test.dart
+- Expected: pressing 'Back' on the Item list shows the Menu again
+- Failed first (Red): A12-back-red
+- Passes now (Green): (not built yet)

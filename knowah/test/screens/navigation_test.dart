@@ -26,4 +26,23 @@ void main() {
         // Now the Item list should be on screen
         expect(find.byType(ItemListScreen), findsOneWidget);
     });
+
+    // TC07: the Back button on the Item list returns to the Menu
+    testWidgets('TC07: Back button returns to the Menu', (tester) async {
+        // Draw the Menu and go to the Item list, same as TC06
+        await tester.pumpWidget(const MaterialApp(home: MenuScreen()));
+        await tester.tap(find.text('Side-Scroller'));
+        await tester.pumpAndSettle();
+
+        // The Item list should be showing now
+        expect(find.byType(ItemListScreen), findsOneWidget);
+
+        // Press the Back button
+        await tester.tap(find.text('Back'));
+        await tester.pumpAndSettle();
+
+        // The Item list should be gone and the Menu should be showing again
+        expect(find.byType(ItemListScreen), findsNothing);
+        expect(find.byType(MenuScreen), findsOneWidget);
+    });
 }
