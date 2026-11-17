@@ -1,6 +1,11 @@
 // Imports Flutter's ready-made building blocks (buttons, text, screens)
 import 'package:material_ui/material_ui.dart';
 
+// Knowahs colours, the 3D text helper and the 3D button
+import 'package:knowah/themes/app_colours.dart';
+import 'package:knowah/themes/effects.dart';
+import 'package:knowah/widgets/button_3d.dart';
+
 // The Menu is the first screen the user sees
 // StatelessWidget means it never changes once it is drawn
 class MenuScreen extends StatelessWidget {
@@ -20,20 +25,23 @@ class MenuScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                             // The app name
-                            const Text(
+                            Text(
                                 'KNOWAH',
                                 style: TextStyle(
                                     fontFamily: 'RubikDirt', 
                                     fontSize: 64, 
-                                    fontWeight: FontWeight.bold
+                                    fontWeight: FontWeight.bold,
+                                    // Adds a 3D effect using shadows
+                                    shadows: extrude(AppColours.cyanShadow, 6),
                                 ),
                             ),
                             // The tagline
-                            const Text(
+                            Text(
                                 'It knows. Noah knows.',
                                 style: TextStyle(
                                     fontSize: 20, 
-                                    fontWeight: FontWeight.normal
+                                    fontWeight: FontWeight.normal,
+                                    shadows: extrude(AppColours.textDimShadow, 2),
                                 )
                             ),
                             // SizedBox is just empty space between things
@@ -75,16 +83,17 @@ class MenuScreen extends StatelessWidget {
                                                 const SizedBox(height: 4),
 
                                                 // Button 1 - New Project, onPressed does nothing yet (empty function)
-                                                ElevatedButton(
+                                                Button3D(
+                                                    filled: true,
+                                                    label: '+ New Project',
                                                     onPressed: () {},
-                                                    child: const Text('+ New Project'),
                                                 ),
-                                                const SizedBox(height: 8),
+                                                const SizedBox(height: 14),
 
                                                 // Button 2 - Open Project
-                                                OutlinedButton(
+                                                Button3D(
+                                                    label: 'Open Project',
                                                     onPressed: () {},
-                                                    child: const Text('Open Project'),
                                                 ),
                                             ],
                                         ),
@@ -98,35 +107,36 @@ class MenuScreen extends StatelessWidget {
                                             crossAxisAlignment: CrossAxisAlignment.stretch,
                                             children: [
                                                 // Recent Projects section
-                                                const Text(
+                                                Text(
                                                     'RECENT PROJECTS',
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                         fontSize: 20,
                                                         fontWeight: FontWeight.normal,
-                                                        color: Color(0XFF8A90B3),
+                                                        color: AppColours.textDim,
+                                                        shadows: extrude(AppColours.textDimShadow, 2),
                                                     ),
                                                 ),
                                                 const SizedBox(height: 4),
 
                                                 // Example games for Recent Projects
-                                                OutlinedButton(
+                                                Button3D(
+                                                    label: 'Side-Scroller',
                                                     onPressed: () {},
-                                                    child: const Text('Side-Scroller'),
                                                 ),
-                                                const SizedBox(height: 8),
+                                                const SizedBox(height: 14),
 
-                                                OutlinedButton(
+                                                Button3D(
+                                                    label: 'Card Battler',
                                                     onPressed: () {},
-                                                    child: const Text('Card Battler'),
                                                 ),
-                                                const SizedBox(height: 8),
+                                                const SizedBox(height: 14),
 
-                                                OutlinedButton(
+                                                Button3D(
+                                                    label: 'Maze Runner',
                                                     onPressed: () {},
-                                                    child: const Text('Maze Runner'),
                                                 ),
-                                                const SizedBox(height: 8),
+                                                const SizedBox(height: 14),
                                             ],
                                         ),
                                     ),

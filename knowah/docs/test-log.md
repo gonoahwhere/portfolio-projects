@@ -32,3 +32,11 @@
 - Expected: TC01, TC02 and TC03 all still pass
 - Result: all tests pass (A5-regression)
 - Repeat after each new screen or feature
+
+## TC05: Item list shows the title of each item
+- Type: Acceptance
+- Category: Visual
+- Test file: test/screens/item_list_screen_test.dart
+- Expected: the Item list screen shows the title of every item it is given
+- Failed first (Red): A6-itemlist-red
+- Passes now (Green): (not built yet)
