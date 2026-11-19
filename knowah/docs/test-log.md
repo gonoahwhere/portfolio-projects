@@ -34,6 +34,7 @@
 - Run 3: after adding navigation, TC01 to TC03, TC05 and TC06 pass (A11-regression)
 - Run 4: after adding the Back button, TC01 to TC03 and TC05 to TC07 pass (A14-regression)
 - Run 5: after adding the details panel, TC01 to TC03, and TC05 to TC08 all pass (A17-regression)
+- Run 6: after adding Item status, TC01 to TC03, and TC05 to TC09 all pass (A20-regression)
 - Repeat after each new screen or feature
 
 ## TC05: Item list shows the title of each item
@@ -74,4 +75,4 @@
 - Test file: test/models/item_test.dart
 - Expected: a new Item is Draft unless another status is given
 - Failed first (Red): A18-status-red
-- Passes now (Green): (not built yet)
+- Passes now (Green): A19-status-green

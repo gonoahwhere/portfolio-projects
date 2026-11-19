@@ -27,12 +27,14 @@ void main() {
         });
 
         // TC09: a new Item starts as a Draft, and keeps any status it is given
-        // Not status givem so it should be Draft
-        final plain = Item(title: 'Double Jump');
-        expect(plain.status, ItemStatus.draft);
+        // Not status given so it should be Draft
+        test('TC09: Item status defaults to Draft and can be set', () {
+            final plain = Item(title: 'Double Jump');
+            expect(plain.status, ItemStatus.draft);
 
-        // A status that is given should be kept
-        final active = Item(title: 'Double Jump', status: ItemStatus.active);
-        expect(active.status, ItemStatus.active);
+            // A status that is given should be kept
+            final active = Item(title: 'Double Jump', status: ItemStatus.active);
+            expect(active.status, ItemStatus.active);
+        });
     });
 }
