@@ -76,3 +76,11 @@
 - Expected: a new Item is Draft unless another status is given
 - Failed first (Red): A18-status-red
 - Passes now (Green): A19-status-green
+
+## TC10: Item list shows the status of each item
+- Type: Acceptance
+- Category: Visual
+- Test file: test/screens/item_list_screen_test.dart
+- Expected: each row shows its item's status (for example Active or Draft)
+- Failed first (Red): A21-status-row-red
+- Passes now (Green): (not built yet)

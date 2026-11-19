@@ -59,4 +59,19 @@ void main() {
             findsOneWidget,
         );
     });
+
+    // TC10: each row shows the status of its item
+    testWidgets('TC10: Item list shows the status of each item', (tester) async {
+        final items = [
+            // Active is given, Draft is the default
+            Item(title: 'Double Jump', status: ItemStatus.active),
+            Item(title: 'Level 2'),
+        ];
+
+        await tester.pumpWidget(MaterialApp(home: ItemListScreen(items: items)));
+
+        // Each status should appear once, next to its item
+        expect(find.text('Active'), findsOneWidget);
+        expect(find.text('Draft'), findsOneWidget);
+    });
 }
