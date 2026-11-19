@@ -21,6 +21,16 @@ class AppShell extends StatelessWidget {
         'Export',
     ];
 
+    // The short labels the mobile bar uses
+    // The key is the full name, the value is what the bar shows
+    static const Map<String, String> _shortLabels = {
+        'Dashboard': 'Home',
+        'Items': 'Items',
+        'Board': 'Board',
+        'Searches': 'Saved',
+        'Export': 'Export',
+    };
+
     // Which entry is the current screen, highlighted cyan
     final String active;
 
@@ -54,8 +64,15 @@ class AppShell extends StatelessWidget {
                     );
                 }
 
-                // Mobile: just the content for now
-                return child;
+                // Mobile: the content on top, the menu bar along the bottom
+                // Column stacks its children from the top to bottom
+                return Column(
+                    children: [
+                        // Expanded makes the content fill all the space above the bar
+                        Expanded(child: child),
+                        _bottomNav(),
+                    ],
+                );
             },
         );
     }
@@ -94,6 +111,50 @@ class AppShell extends StatelessWidget {
                     for (final label in _entries) _entry(label),
                 ],
             ),
+        );
+    }
+
+    // The menu along the bottom of the screen
+    Widget _bottomNav() {
+        return Container(
+            // The name tag the TC12 test uses to find the bar
+            key: const Key('bottom-nav'),
+
+            // Always full width of the screen
+            width: double.infinity,
+            
+            // Only up and down padding, so the labels get all the width
+            padding: const EdgeInsets.symmetric(vertical: 14),
+
+            // A thin line along the top edge
+            decoration: const BoxDecoration(
+                border: Border(top: BorderSide(color: AppColours.border)),
+            ),
+            child: Row(
+                children: [
+                    // One label for every menu entry
+                    for (final label in _entries)
+                        // Expanded gives every label an equal share of the width
+                        Expanded(
+                            // Center puts the label in the middle of its share
+                            child: Center(
+                                // FittedBox shrinks the label if it doesn't fit, instead of overflowing
+                                child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Text3D(
+                                        _shortLabels[label]!,
+                                        fontSize: 13,
+                                        // The current screen is cyan, the others are grey-blue
+                                        colour: label == active
+                                            ? AppColours.cyan
+                                            : AppColours.textDim,
+                                    ),
+                                ),
+                            ),
+                        ),
+                ],
+            ),
+
         );
     }
 
