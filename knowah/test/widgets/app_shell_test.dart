@@ -35,4 +35,32 @@ void main() {
         // The content we passed in should still be shown
         expect(find.text('content'), findsOneWidget);
     });
+
+    // TC12: on a narrow window, the shell shows a bottom bar instead of the sidebar
+    testWidgets('TC12: Narrow window shows the bottom menu bar', (tester) async {
+        // Make the pretend window phone-size (narrow)
+        tester.view.physicalSize = const Size(40, 800);
+        tester.view.devicePixelRatio = 1.0;
+
+        // Put the window size back to normal when the test ends
+        addTearDown(tester.view.resetPhysicalSize);
+        addTearDown(tester.view.resetDevicePixelRatio);
+
+        // Draw the shell arouns some pretend content
+        await tester.pumpWidget(const MaterialApp(
+            home: AppShell(active: 'Items', child: Text('content')),
+        ));
+
+        // The bottom bar should exist, and the sidebar should not
+        expect(find.byKey(const Key('bottom-nav')), findsOneWidget);
+        expect(find.byKey(const Key('sidebar')), findsNothing);
+
+        // The 5 short labels should be in the bar
+        for (final label in ['Home', 'Items', 'Board', 'Saved', 'Export']) {
+            expect(find.text(label), findsOneWidget);
+        }
+
+        // The content we passed in should still be shown
+        expect(find.text('content'), findsOneWidget);
+    });
 }

@@ -104,3 +104,11 @@
 - Expected: on a wide window, a sidebar shows Dashboard, Items, Board, Searches and Export
 - Failed first (Red): A26-sidebar-red
 - Passes now (Green): A27-sidebar-green
+
+## TC12: Narrow window shows the bottom menu bar
+- Type: Acceptance
+- Category: Visual
+- Test file: test/widgets/app_shell_test.dart
+- Expected: on a narrow window, a bottom bar shows Home, Items, Board, Saved and Export
+- Failed first (Red): A30-bottom-bar-red
+- Passes now (Green): (not built yet)
