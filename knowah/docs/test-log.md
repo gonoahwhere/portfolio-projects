@@ -35,6 +35,7 @@
 - Run 4: after adding the Back button, TC01 to TC03 and TC05 to TC07 pass (A14-regression)
 - Run 5: after adding the details panel, TC01 to TC03, and TC05 to TC08 all pass (A17-regression)
 - Run 6: after adding Item status, TC01 to TC03, and TC05 to TC09 all pass (A20-regression)
+- Run 7: after addomg the status row, TC01 to TC03, and TC05 to T10 all pass (A23-regression)
 - Repeat after each new screen or feature
 
 ## TC05: Item list shows the title of each item
@@ -83,4 +84,4 @@
 - Test file: test/screens/item_list_screen_test.dart
 - Expected: each row shows its item's status (for example Active or Draft)
 - Failed first (Red): A21-status-row-red
-- Passes now (Green): (not built yet)
+- Passes now (Green): A22-status-row-green

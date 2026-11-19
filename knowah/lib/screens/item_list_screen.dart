@@ -110,10 +110,27 @@ class _ItemListScreenState extends State<ItemListScreen> {
                 // setState tells Flutter to redraw with the new selected item
                 // Panel3D also lights up cyan while held, because onTap is given
                 onTap: () => setState(() => _selected = item),
-                // The item's title
-                child: Text(item.title),
-            )
+                // Row puts the title on the left and the status on the right
+                child: Row(
+                    children: [
+                        // Expanded makes the title take all the free space
+                        // which pushes the status over to the right edge
+                        Expanded(child: Text(item.title)),
+                        // The status, in a quieter grey-blue colour
+                        Text(
+                            _statusLabel(item.status),
+                            style: const TextStyle(color: AppColours.textDim),
+                        ),
+                    ],
+                ),
+            ),
         );
+    }
+
+    // Turns a status like ItemStatus.draft into the text 'Draft'
+    String _statusLabel(ItemStatus status) {
+        // status.name is 'draft', so capitilisation is needed for the first letter
+        return status.name[0].toUpperCase() + status.name.substring(1);
     }
 
     // The details panel on the right (PC only)

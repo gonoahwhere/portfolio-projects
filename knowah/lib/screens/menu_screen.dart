@@ -166,7 +166,7 @@ class MenuScreen extends StatelessWidget {
                         Item(title: 'Double Jump'),
                         Item(title: 'Level 2'),
                         Item(title: 'Slime Enemy'),
-                        Item(title: 'Character floats'),
+                        Item(title: 'Character Floats'),
                     ],
                 ),
             ),
