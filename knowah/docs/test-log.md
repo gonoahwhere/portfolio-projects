@@ -12,7 +12,7 @@
 - Type: Unit
 - Category: Input
 - Test file: test/models/item_test.dart
-- Expected creating an Item with a title over 80 characters throws an error
+- Expected: creating an Item with a title over 80 characters throws an error
 - Failed first (Red): A1-item-red
 - Passes now (Green): A2-item-green
 
@@ -38,6 +38,7 @@
 - Run 7: after adding the status row, TC01 to TC03, and TC05 to T10 all pass (A23-regression)
 - Run 8: after the Text3D refactor, TC01 to TC03, and TC05 to TC10 all pass (A24-refactor)
 - Run 9: after the details panel refactor, TC01 to TC03, and TC05 to TC10 all pass (A25-refactor)
+- Run 10: after adding the sidebar and the divider line, TC01 to TC03, and TC05 to TC11 all pass (A28-regression)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor
@@ -45,6 +46,7 @@
 - Refactor 2: Button3D, Panel3D and AppColours pulled out into shared files (no separate screenshot, covered by later regression runs)
 - Refactor 3: Text3D so the 3D edge follows the text colour (checked by regression Run 8, A24-refactor)
 - Refactor 4: Details panel split into a heading plus separate boxes (checked by regression Run 9, A25-refactor)
+- Refactor 5: Dividual line between the list and details panel (checked by regression Run 10, A28-regression)
 
 ## TC05: Item list shows the title of each item
 - Type: Acceptance
@@ -93,3 +95,11 @@
 - Expected: each row shows its item's status (for example Active or Draft)
 - Failed first (Red): A21-status-row-red
 - Passes now (Green): A22-status-row-green
+
+## TC11: Wide window shows the sidebar menu
+- Type: Acceptance
+- Category: Visual
+- Test file: test/widgets/app_shell_test.dart
+- Expected: on a wide window, a sidebar shows Dashboard, Items, Board, Searches and Export
+- Failed first (Red): A26-sidebar-red
+- Passes now (Green): A27-sidebar-green

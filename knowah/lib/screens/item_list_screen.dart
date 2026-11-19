@@ -52,8 +52,15 @@ class _ItemListScreenState extends State<ItemListScreen> {
                                     // Expanded shares out the width
                                     // flex: 2 means the list gets twice the share of the details panel
                                     Expanded(flex: 2, child: _list()),
-                                    // Empty space between the two sides
+                                    // A thin line splitting the list from the details
                                     const SizedBox(width: 24),
+                                    Container(
+                                        width: 1,
+                                        height: double.infinity,
+                                        color: AppColours.border,
+                                    ),
+                                    const SizedBox(width: 24),
+                                    
                                     Expanded(flex: 1, child: _details()),
                                 ],
                             );
