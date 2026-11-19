@@ -143,27 +143,30 @@ class _ItemListScreenState extends State<ItemListScreen> {
         return Padding(
             // Room for the 3D edge on the right and bottom
             padding: const EdgeInsets.only(right: 5, bottom: 5),
-            child: Panel3D(
+            child: Column(
                 // The name tag the TC08 test uses to find this panel
                 key: const Key('details-panel'),
-                child: Column(
-                    // Only as tall as its contents
-                    mainAxisSize: MainAxisSize.min,
-                    // Lines up the text on the left
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                        // Small heading
-                        const Text3D(
-                            'DETAILS',
-                            colour: AppColours.textDim,
-                            fontSize: 14,
-                        ),
-                        const SizedBox(height: 12),
+                // Only as tall as its contents
+                mainAxisSize: MainAxisSize.min,
+                // Makes each box stretch the full width of the panel
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                    // Small heading, above the boxes
+                    const Text3D(
+                        'ITEM DETAILS',
+                        colour: AppColours.textDim,
+                        fontSize: 14,
+                    ),
+                    const SizedBox(height: 12),
 
-                        // The selected item's title, or a message if nothing is selected
-                        Text3D(_selected?.title ?? 'Select an item'),
-                    ],
-                ),
+                    // Box 1: the selected item's title, or a message if nothing is selected
+                    Panel3D(
+                        child: Text3D(
+                            colour: AppColours.text,
+                            _selected?.title ?? 'Select an item'
+                        ),
+                    ),
+                ],
             ),
         );
     }

@@ -35,14 +35,16 @@
 - Run 4: after adding the Back button, TC01 to TC03 and TC05 to TC07 pass (A14-regression)
 - Run 5: after adding the details panel, TC01 to TC03, and TC05 to TC08 all pass (A17-regression)
 - Run 6: after adding Item status, TC01 to TC03, and TC05 to TC09 all pass (A20-regression)
-- Run 7: after addomg the status row, TC01 to TC03, and TC05 to T10 all pass (A23-regression)
+- Run 7: after adding the status row, TC01 to TC03, and TC05 to T10 all pass (A23-regression)
 - Run 8: after the Text3D refactor, TC01 to TC03, and TC05 to TC10 all pass (A24-refactor)
+- Run 9: after the details panel refactor, TC01 to TC03, and TC05 to TC10 all pass (A25-refactor)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor
 - Refactor 1: Menu split into PC and mobile layouts (checked by regression Run 1, A5-regression)
 - Refactor 2: Button3D, Panel3D and AppColours pulled out into shared files (no separate screenshot, covered by later regression runs)
 - Refactor 3: Text3D so the 3D edge follows the text colour (checked by regression Run 8, A24-refactor)
+- Refactor 4: Details panel split into a heading plus separate boxes (checked by regression Run 9, A25-refactor)
 
 ## TC05: Item list shows the title of each item
 - Type: Acceptance

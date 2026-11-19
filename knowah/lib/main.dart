@@ -4,6 +4,9 @@ import 'package:material_ui/material_ui.dart';
 // The Menu screen from lib/screens
 import 'package:knowah/screens/menu_screen.dart';
 
+// Knowahs colours
+import 'package:knowah/themes/app_colours.dart';
+
 // main() is where every Dart program starts
 // runApp() tells Flutter which widget to show first
 void main() => runApp(const KnowahApp());
@@ -24,7 +27,7 @@ class KnowahApp extends StatelessWidget {
                 // Dark mode makes default text light instead of dark
                 brightness: Brightness.dark,
                 // The page background colour for every Scaffold
-                scaffoldBackgroundColor: const Color(0xFF0A0D18),
+                scaffoldBackgroundColor: AppColours.background,
                 fontFamily: 'Sniglet',
                 // Sets the colour of all text in the app, once
                 // bodyColor is normal text, displayColor is big headings
