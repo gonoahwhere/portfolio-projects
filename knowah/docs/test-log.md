@@ -67,3 +67,11 @@
 - Expected: on a wide window, tapping an item shows its title in the details panel
 - Failed first (Red): A15-details-red
 - Passes now (Green): A16-details-green
+
+## TC09: Item status defaults to Draft and can be set
+- Type: Unit
+- Category: Input
+- Test file: test/models/item_test.dart
+- Expected: a new Item is Draft unless another status is given
+- Failed first (Red): A18-status-red
+- Passes now (Green): (not built yet)
