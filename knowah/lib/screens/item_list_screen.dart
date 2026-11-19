@@ -7,6 +7,9 @@ import 'package:knowah/models/item.dart';
 // Knowah colours
 import 'package:knowah/themes/app_colours.dart';
 
+// The main that wraps the screen (sidebar for PC)
+import 'package:knowah/widgets/app_shell.dart';
+
 // The 3D box, text and button
 import 'package:knowah/widgets/panel_3d.dart';
 import 'package:knowah/widgets/text_3d.dart';
@@ -33,42 +36,44 @@ class _ItemListScreenState extends State<ItemListScreen> {
     Widget build(BuildContext context) {
         // Scaffold is a blank page
         return Scaffold(
-            // Padding keeps everything away from the edges of the window
-            body: Padding(
-                padding: const EdgeInsets.all(16),
-                // LayoutBuilder tells us how much width we have to work with
-                child: LayoutBuilder(
-                    builder: (context, constraints) {
-                        // Wider than 700 pixels counts as a PC layout
-                        final isWide = constraints.maxWidth > 700;
+            // AppShell adds the sidebar on a wide window
+            body: AppShell(
+                // The Items entry lights up cyan
+                active: 'Items',
+                // Padding keeps the content away from the edges
+                child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    // LayoutBuilder tells us how much width the content has
+                    child: LayoutBuilder(
+                        builder: (context, constraints) {
+                            // Wider than 700 pixels counts as a PC layout
+                            final isWide = constraints.maxWidth > 700;
 
-                        if (isWide) {
-                            // PC: the list on the left, the details panel on the right
-                            // Row puts its children side by side
-                            return Row(
-                                // Lines up the tops of both sides
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                    // Expanded shares out the width
-                                    // flex: 2 means the list gets twice the share of the details panel
-                                    Expanded(flex: 2, child: _list()),
-                                    // A thin line splitting the list from the details
-                                    const SizedBox(width: 24),
-                                    Container(
-                                        width: 1,
-                                        height: double.infinity,
-                                        color: AppColours.border,
-                                    ),
-                                    const SizedBox(width: 24),
-                                    
-                                    Expanded(flex: 1, child: _details()),
-                                ],
-                            );
-                        }
+                            if (isWide) {
+                                // PC: the list on the left, the details panel on the right
+                                return Row(
+                                    // Lines up the tops of both sides
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                        // flex: 2 means the list gets twice the share of the details panel
+                                        Expanded(flex: 2, child: _list()),
+                                        // A thin line splitting the list from the details
+                                        const SizedBox(width: 24),
+                                        Container(
+                                            width: 1,
+                                            height: double.infinity,
+                                            color: AppColours.border,
+                                        ),
+                                        const SizedBox(width: 24),
+                                        Expanded(flex: 1, child: _details()),
+                                    ],
+                                );
+                            }
 
-                        // Mobile: only the list
-                        return _list();
-                    },
+                            // Mobile: only the list
+                            return _list();
+                        },
+                    ),
                 ),
             ),
         );
@@ -80,7 +85,7 @@ class _ItemListScreenState extends State<ItemListScreen> {
         return ListView(
             // Room for the 3D edges on the right and bottom
             // A ListView cuts off anything drawn outside itself
-            // so without this the edges would be sliced off
+            // so without this, the edges would be sliced off
             padding: const EdgeInsets.only(right: 5, bottom: 5),
             children: [
                 // Back button, in the top left

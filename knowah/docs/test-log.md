@@ -39,6 +39,7 @@
 - Run 8: after the Text3D refactor, TC01 to TC03, and TC05 to TC10 all pass (A24-refactor)
 - Run 9: after the details panel refactor, TC01 to TC03, and TC05 to TC10 all pass (A25-refactor)
 - Run 10: after adding the sidebar and the divider line, TC01 to TC03, and TC05 to TC11 all pass (A28-regression)
+- Run 11: after wrapping the Item list in teh side sidebar, TC01 to TC03, and TC05 to TC11 all pass (A29-regression)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor

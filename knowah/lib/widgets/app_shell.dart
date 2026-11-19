@@ -44,6 +44,8 @@ class AppShell extends StatelessWidget {
                 if (isWide) {
                     // Rows puts the sidebar and the content side by side
                     return Row(
+                        // Makes the sidebar as tall as the window, so its edge line runs top to bottom
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                             _sidebar(),
                             // Expanded makes the content fill the rest of the width
@@ -63,7 +65,7 @@ class AppShell extends StatelessWidget {
         return Container(
             // The name tag the TC11 test uses to find the sidebar
             key: const Key('sidebar'),
-            width: 160,
+            width: 200,
             padding: const EdgeInsets.symmetric(vertical: 16),
             // A thin line down the right edge
             decoration: const BoxDecoration(
@@ -73,14 +75,14 @@ class AppShell extends StatelessWidget {
                 // Lines the entries up on the left
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                    // The app name at the top
-                    Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
+                    // The app name, in the same 3D font as the main menu
+                    // Center puts it in the middle of the sidebar's WDITH
+                    Center(
                         child: Text(
                             'KNOWAH', 
                             style: TextStyle(
                                 fontFamily: 'RubikDirt',
-                                fontSize: 22,
+                                fontSize: 30,
                                 color: AppColours.text,
                                 shadows: extrude(AppColours.cyanShadow, 3),
                             )
