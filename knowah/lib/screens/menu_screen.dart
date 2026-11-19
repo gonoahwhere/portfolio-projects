@@ -163,7 +163,7 @@ class MenuScreen extends StatelessWidget {
                 // The screen to show
                 builder: (context) => ItemListScreen(
                     items: [
-                        Item(title: 'Double Jump'),
+                        Item(title: 'Double Jump', status: ItemStatus.active),
                         Item(title: 'Level 2'),
                         Item(title: 'Slime Enemy'),
                         Item(title: 'Character Floats'),

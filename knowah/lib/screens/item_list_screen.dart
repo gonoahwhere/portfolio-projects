@@ -7,8 +7,9 @@ import 'package:knowah/models/item.dart';
 // Knowah colours
 import 'package:knowah/themes/app_colours.dart';
 
-// The 3D box and button
+// The 3D box, text and button
 import 'package:knowah/widgets/panel_3d.dart';
+import 'package:knowah/widgets/text_3d.dart';
 import 'package:knowah/widgets/button_3d.dart';
 
 // The Item list shows every item in the project
@@ -115,11 +116,15 @@ class _ItemListScreenState extends State<ItemListScreen> {
                     children: [
                         // Expanded makes the title take all the free space
                         // which pushes the status over to the right edge
-                        Expanded(child: Text(item.title)),
+                        Expanded(child: Text3D(
+                            colour: AppColours.text,
+                            item.title
+                            )
+                        ),
                         // The status, in a quieter grey-blue colour
-                        Text(
+                        Text3D(
                             _statusLabel(item.status),
-                            style: const TextStyle(color: AppColours.textDim),
+                            colour: AppColours.textDim,
                         ),
                     ],
                 ),
@@ -148,17 +153,15 @@ class _ItemListScreenState extends State<ItemListScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                         // Small heading
-                        const Text(
+                        const Text3D(
                             'DETAILS',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: AppColours.textDim,
-                            ),
+                            colour: AppColours.textDim,
+                            fontSize: 14,
                         ),
                         const SizedBox(height: 12),
 
                         // The selected item's title, or a message if nothing is selected
-                        Text(_selected?.title ?? 'Select an item'),
+                        Text3D(_selected?.title ?? 'Select an item'),
                     ],
                 ),
             ),

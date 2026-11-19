@@ -4,6 +4,9 @@ import 'package:material_ui/material_ui.dart';
 // Knowahs colours
 import 'package:knowah/themes/app_colours.dart';
 
+// The 3D text helper
+import 'package:knowah/themes/effects.dart';
+
 // A button with a solid 3D edge that squashes down when pressed
 // Used on every screen, so it lives here instead of inside one specific screen
 // StatefulWidget because it changes while the app runs (pressed or not pressed)
@@ -106,6 +109,8 @@ class _Button3DState extends State<Button3D> {
                         fontSize: 16,
                         fontFamily: 'Sniglet',
                         color: accent,
+                        // The 3D on the text, same colour as the button's edge
+                        shadows: extrude(edge, 2)
                     ),
                 ),
             ),

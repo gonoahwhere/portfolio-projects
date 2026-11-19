@@ -24,4 +24,8 @@ class AppColours {
     // see-through shadows overlap and show stripes where they cross
     static const Color cyanShadow = Color(0xFF1F6B60);
     static const Color textDimShadow = Color(0xFF3A4075);
+
+    // Edge colour for normal text
+    // Lighter than textDimShadow, so white text and grey-blue text each get their own edge
+    static const Color textShadow = Color(0xFF5A6099);
 } 
