@@ -26,4 +26,37 @@ void main() {
         expect(find.text('Double Jump'), findsOneWidget);
         expect(find.text('Slime Enemy'), findsOneWidget);
     });
+
+    testWidgets('TC08: Tapping an item shows it in the details panel', (tester) async {
+        // Maket he pretend window PC sized (wide)
+        tester.view.physicalSize = const Size(1400, 900);
+        tester.view.devicePixelRatio = 1.0;
+
+        // Put the window size back to normal when the test ends
+        addTearDown(tester.view.resetPhysicalSize);
+        addTearDown(tester.view.resetDevicePixelRatio);
+
+        final items = [
+            Item(title: 'Double Jump'),
+            Item(title: 'Slime Enemy'),
+        ];
+
+        await tester.pumpWidget(MaterialApp(home: ItemListScreen(items: items)));
+
+        // Tap the first item in the list
+        await tester.tap(find.text('Double Jump'));
+        await tester.pumpAndSettle();
+
+        // The details panel should exist
+        expect(find.byKey(const Key('details-panel')), findsOneWidget);
+
+        // it should contain the title of the item we tapped
+        expect(
+            find.descendant(
+                of: find.byKey(const Key('details-panel')),
+                matching: find.text('Double Jump'),
+            ),
+            findsOneWidget,
+        );
+    });
 }

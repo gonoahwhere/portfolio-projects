@@ -58,3 +58,11 @@
 - Expected: pressing 'Back' on the Item list shows the Menu again
 - Failed first (Red): A12-back-red
 - Passes now (Green): A13-back-green
+
+## TC08: Tapping an item shows it in the details panel
+- Type: Acceptance
+- Category: Visual
+- Test file: test/screens/item_list_screen_test.dart
+- Expected: on a wide window, tapping an item shows its title in the details panel
+- Failed first (Red): A15-details-red
+- Passes now (Green): (not built yet)
