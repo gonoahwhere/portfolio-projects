@@ -7,6 +7,9 @@ import 'package:flutter_test/flutter_test.dart';
 // The Item made in another file
 import 'package:knowah/models/item.dart';
 
+// The Link made in another file
+import 'package:knowah/models/link.dart';
+
 // This screen doesn't exist yet, so the test with fail (Red)
 import 'package:knowah/screens/item_list_screen.dart';
 
@@ -138,6 +141,40 @@ void main() {
             find.descendant(
                 of: find.byKey(const Key('details-panel')),
                 matching: find.text('Active'),
+            ),
+            findsOneWidget,
+        );
+    });
+
+    // TC16: the details panel lists the links of the selected item
+    testWidgets('TC16: Details panel shows the links of the selected item', (tester) async {
+        // Make the pretend window PC sized (wide)
+        tester.view.physicalSize = const Size(1400, 900);
+        tester.view.devicePixelRatio = 1.0;
+
+        // Put the window size back to normal when the test ends
+        addTearDown(tester.view.resetPhysicalSize);
+        addTearDown(tester.view.resetDevicePixelRatio);
+
+        final doubleJump = Item(title: 'Double Jump', status: ItemStatus.active);
+        final level2 = Item(title: 'Level 2');
+
+        // Double Jump is 'introduced in' Level 2
+        final links = [
+            Link(type: LinkType.introducedIn, from: doubleJump, to: level2),
+        ];
+
+        await tester.pumpWidget(MaterialApp(home: ItemListScreen(items: [doubleJump, level2], links: links)));
+
+        // Tap the first item
+        await tester.tap(find.text('Double Jump'));
+        await tester.pumpAndSettle();
+
+        // the panel should show the link as one line of text
+        expect(
+            find.descendant(
+                of: find.byKey(const Key('details-panel')),
+                matching: find.text('Introduced in → Level 2'),
             ),
             findsOneWidget,
         );

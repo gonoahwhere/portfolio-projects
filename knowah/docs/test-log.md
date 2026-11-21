@@ -140,3 +140,11 @@
 - Expected: a Link holds its type, from item and to item, and throws an error if both items are the same
 - Failed first (Red): A39-link-red
 - Passes now (Green): A40-link-green
+
+## TC16: Details panel shows the links of the selected item
+- Type: Acceptance
+- Category: Visual
+- Test file: test/models/item_list_screen_test.dart
+- Expected: tapping an item shows its links in the details panel, for example: 'Introduced in → Level 2'
+- Failed first (Red): A42-links-red
+- Passes now (Green): (not built yet)
