@@ -41,6 +41,7 @@
 - Run 10: after adding the sidebar and the divider line, TC01 to TC03, and TC05 to TC11 all pass (A28-regression)
 - Run 11: after wrapping the Item list in the side sidebar, TC01 to TC03, and TC05 to TC11 all pass (A29-regression)
 - Run 12: after adding the mobile bottom bar, TC01 to TC03, and TC05 to TC12 all pass (A32-regression)
+- Run 13: after adding the details screen for narrow windows, TC01 to TC03, and TC05 to TC13 all pass (A35-regression)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor
