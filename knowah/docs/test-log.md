@@ -131,3 +131,11 @@
 - Expected: tapping an item shows its status in the details panel
 - Failed first (Red): A36-details-status-red
 - Passes now (Green): A37-details-status-green
+
+## TC15: Link keeps its type and items, and rejects linking an item to itself
+- Type: Unit
+- Category: Input
+- Test file: test/models/link_test.dart
+- Expected: a Link holds its type, from item and to item, and throws an error if both items are the same
+- Failed first (Red): A39-link-red
+- Passes now (Green): (not built yet)
