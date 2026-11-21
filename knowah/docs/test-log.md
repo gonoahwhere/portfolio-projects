@@ -39,7 +39,8 @@
 - Run 8: after the Text3D refactor, TC01 to TC03, and TC05 to TC10 all pass (A24-refactor)
 - Run 9: after the details panel refactor, TC01 to TC03, and TC05 to TC10 all pass (A25-refactor)
 - Run 10: after adding the sidebar and the divider line, TC01 to TC03, and TC05 to TC11 all pass (A28-regression)
-- Run 11: after wrapping the Item list in teh side sidebar, TC01 to TC03, and TC05 to TC11 all pass (A29-regression)
+- Run 11: after wrapping the Item list in the side sidebar, TC01 to TC03, and TC05 to TC11 all pass (A29-regression)
+- Run 12: after adding the mobile bottom bar, TC01 to TC03, and TC05 to TC12 all pass (A32-regression)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor
@@ -111,4 +112,12 @@
 - Test file: test/widgets/app_shell_test.dart
 - Expected: on a narrow window, a bottom bar shows Home, Items, Board, Saved and Export
 - Failed first (Red): A30-bottom-bar-red
-- Passes now (Green): (not built yet)
+- Passes now (Green): A31-bottom-bar-green
+
+## TC13: Tapping an item on a narrow window opens its details
+- Type: Acceptance
+- Category: Input
+- Test file: test/screens/item_list_screen_test.dart
+- Expected: on a narrow window, tapping an item opens a details screen showing that item
+- Failed first (Red): A33-details-screen-red
+- Passes now (Green): A34-details-screen-green

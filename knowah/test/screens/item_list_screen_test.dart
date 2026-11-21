@@ -74,4 +74,41 @@ void main() {
         expect(find.text('Active'), findsOneWidget);
         expect(find.text('Draft'), findsOneWidget);
     });
+
+    // TC13: on a narrow window, tapping an item opens its details on a separate screen
+    testWidgets('TC13: Tapping an item on a narrow window opens its details', (tester) async {
+        // Make the pretend window narrow (phone sized)
+        tester.view.physicalSize = const Size(400, 800);
+        tester.view.devicePixelRatio = 1.0;
+
+        // Put the window size back to normal when the test ends
+        addTearDown(tester.view.resetPhysicalSize);
+        addTearDown(tester.view.resetDevicePixelRatio);
+
+        final items = [
+            Item(title: 'Double Jump', status: ItemStatus.active),
+            Item(title: 'Level 2'),
+        ];
+
+        await tester.pumpWidget(MaterialApp(home: ItemListScreen(items: items)));
+
+        // There is no details screen before the tap
+        expect(find.byKey(const Key('details-screen')), findsNothing);
+
+        // Tap the first item
+        await tester.tap(find.text('Double Jump'));
+        await tester.pumpAndSettle();
+
+        // The details screen should now be showing
+        expect(find.byKey(const Key('details-screen')), findsOneWidget);
+
+        // it should contain the title of the item we tapped
+        expect(
+            find.descendant(
+                of: find.byKey(const Key('details-screen')),
+                matching: find.text('Double Jump'),
+            ),
+            findsOneWidget,
+        );
+    });
 }

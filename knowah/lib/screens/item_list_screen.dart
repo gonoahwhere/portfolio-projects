@@ -15,6 +15,9 @@ import 'package:knowah/widgets/panel_3d.dart';
 import 'package:knowah/widgets/text_3d.dart';
 import 'package:knowah/widgets/button_3d.dart';
 
+// The screen that shows one item on its own
+import 'package:knowah/screens/item_details_screen.dart';
+
 // The Item list shows every item in the project
 // StatefulWidget because it changes while the app runs (which item is selected)
 class ItemListScreen extends StatefulWidget {
@@ -56,7 +59,8 @@ class _ItemListScreenState extends State<ItemListScreen> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                         // flex: 2 means the list gets twice the share of the details panel
-                                        Expanded(flex: 2, child: _list()),
+                                        // true tells the list the details panel is showing
+                                        Expanded(flex: 2, child: _list(true)),
                                         // A thin line splitting the list from the details
                                         const SizedBox(width: 24),
                                         Container(
@@ -71,7 +75,8 @@ class _ItemListScreenState extends State<ItemListScreen> {
                             }
 
                             // Mobile: only the list
-                            return _list();
+                            // false tells the list there is no details panel
+                            return _list(false);
                         },
                     ),
                 ),
@@ -80,7 +85,7 @@ class _ItemListScreenState extends State<ItemListScreen> {
     }
 
     // The back button and the list of items
-    Widget _list() {
+    Widget _list(bool isWide) {
         // ListView is a scrolling list
         return ListView(
             // Room for the 3D edges on the right and bottom
@@ -106,13 +111,13 @@ class _ItemListScreenState extends State<ItemListScreen> {
                 const SizedBox(height: 20),
 
                 // Makes one row for every item in the list
-                for (final item in widget.items) _itemRow(item),
+                for (final item in widget.items) _itemRow(item, isWide),
             ],
         );
     }
 
     // One row in the list
-    Widget _itemRow(Item item) {
+    Widget _itemRow(Item item, bool isWide) {
         return Padding(
             // Space between one row and the next
             // Bigger than 8 so the 3D edges don't touch the next row
@@ -120,9 +125,22 @@ class _ItemListScreenState extends State<ItemListScreen> {
             child: Panel3D(
                 // The selected row stays cyan
                 filled: _selected == item,
-                // setState tells Flutter to redraw with the new selected item
                 // Panel3D also lights up cyan while held, because onTap is given
-                onTap: () => setState(() => _selected = item),
+                onTap: () {
+                    if (isWide) {
+                        // The details panel is showing, so just fill it
+                        // setState tells Flutter to redraw with the new selected item
+                        setState(() => _selected = item);
+                    } else {
+                        // No room for the panel, so open the details on their own screen
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ItemDetailsScreen(item: item),
+                            ),
+                        );
+                    }
+                },
                 // Row puts the title on the left and the status on the right
                 child: Row(
                     children: [
