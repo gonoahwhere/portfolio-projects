@@ -122,3 +122,11 @@
 - Expected: on a narrow window, tapping an item opens a details screen showing that item
 - Failed first (Red): A33-details-screen-red
 - Passes now (Green): A34-details-screen-green
+
+## TC14: Details panel shows the status of the selected item
+- Type: Acceptance
+- Category: Visual
+- Test file: test/screens/item_list_screen_test.dart
+- Expected: tapping an item shows its status in the details panel
+- Failed first (Red): A36-details-status-red
+- Passes now (Green): (not built yet)

@@ -111,4 +111,35 @@ void main() {
             findsOneWidget,
         );
     });
+
+    // TC14: the details panel shows the status of a selected item
+    testWidgets('TC14: Details panel shows the status of the selected item', (tester) async {
+        // Make the pretend window PC sized (wide)
+        tester.view.physicalSize = const Size(1400, 900);
+        tester.view.devicePixelRatio = 1.0;
+
+        // Put the window size back to normal when the test ends
+        addTearDown(tester.view.resetPhysicalSize);
+        addTearDown(tester.view.resetDevicePixelRatio);
+
+        final items = [
+            Item(title: 'Double Jump', status: ItemStatus.active),
+            Item(title: 'Level 2'),
+        ];
+        await tester.pumpWidget(MaterialApp(home: ItemListScreen(items: items)));
+
+        // Tap the first item
+        await tester.tap(find.text('Double Jump'));
+        await tester.pumpAndSettle();
+
+        // 'Active' should now appear inside the details panel
+        // the list row has its own 'Active', so we only look inside the panel
+        expect(
+            find.descendant(
+                of: find.byKey(const Key('details-panel')),
+                matching: find.text('Active'),
+            ),
+            findsOneWidget,
+        );
+    });
 }
