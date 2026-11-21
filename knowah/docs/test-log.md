@@ -43,6 +43,7 @@
 - Run 12: after adding the mobile bottom bar, TC01 to TC03, and TC05 to TC12 all pass (A32-regression)
 - Run 13: after adding the details screen for narrow windows, TC01 to TC03, and TC05 to TC13 all pass (A35-regression)
 - Run 14: after adding the status box to the details panel, TC01 to TC03, and TC05 to TC14 all pass (A38-regression)
+- Run 15: after adding the Link model, TC01 to TC03 and TC05 to TC15 all pass (A41-regression)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor
@@ -138,4 +139,4 @@
 - Test file: test/models/link_test.dart
 - Expected: a Link holds its type, from item and to item, and throws an error if both items are the same
 - Failed first (Red): A39-link-red
-- Passes now (Green): (not built yet)
+- Passes now (Green): A40-link-green
