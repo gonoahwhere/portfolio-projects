@@ -136,7 +136,7 @@ void main() {
         await tester.pumpAndSettle();
 
         // 'Active' should now appear inside the details panel
-        // the list row has its own 'Active', so we only look inside the panel
+        // The list row has its own 'Active', so we only look inside the panel
         expect(
             find.descendant(
                 of: find.byKey(const Key('details-panel')),
@@ -159,7 +159,7 @@ void main() {
         final doubleJump = Item(title: 'Double Jump', status: ItemStatus.active);
         final level2 = Item(title: 'Level 2');
 
-        // Double Jump is 'introduced in' Level 2
+        // Double Jump is 'Introduced In' Level 2
         final links = [
             Link(type: LinkType.introducedIn, from: doubleJump, to: level2),
         ];
@@ -170,11 +170,54 @@ void main() {
         await tester.tap(find.text('Double Jump'));
         await tester.pumpAndSettle();
 
-        // the panel should show the link as one line of text
+        // The panel should show the link as one line of text
         expect(
             find.descendant(
                 of: find.byKey(const Key('details-panel')),
-                matching: find.text('introduced in → Level 2'),
+                matching: find.text('Introduced In → Level 2'),
+            ),
+            findsOneWidget,
+        );
+    });
+
+    // TC17: on a narrow window, the details screen shows the status and links too
+    testWidgets('TC17: Narrow details screen shows the status and links', (tester) async {
+        // Make the pretend window phone sized
+        tester.view.physicalSize = const Size(400, 800);
+        tester.view.devicePixelRatio = 1.0;
+
+        // Put the window size back to normal when the test ends
+        addTearDown(tester.view.resetPhysicalSize);
+        addTearDown(tester.view.resetDevicePixelRatio);
+
+        final doubleJump = Item(title: 'Double Jump', status: ItemStatus.active);
+        final level2 = Item(title: 'Level 2');
+
+        // Double Jump is 'Introduced In' Level 2
+        final links = [
+            Link(type: LinkType.introducedIn, from: doubleJump, to: level2),
+        ];
+
+        await tester.pumpWidget(MaterialApp(home: ItemListScreen(items: [doubleJump, level2], links: links)));
+
+        // Tap the first item
+        await tester.tap(find.text('Double Jump'));
+        await tester.pumpAndSettle();
+
+        // The status should be inside the details screen
+        expect(
+            find.descendant(
+                of: find.byKey(const Key('details-screen')),
+                matching: find.text('Active'),
+            ),
+            findsOneWidget,
+        );
+
+        // The screen should show the link as one line of text
+        expect(
+            find.descendant(
+                of: find.byKey(const Key('details-screen')),
+                matching: find.text('Introduced In → Level 2'),
             ),
             findsOneWidget,
         );

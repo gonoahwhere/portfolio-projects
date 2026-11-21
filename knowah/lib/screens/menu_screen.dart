@@ -10,6 +10,9 @@ import 'package:knowah/widgets/button_3d.dart';
 import 'package:knowah/models/item.dart';
 import 'package:knowah/screens/item_list_screen.dart';
 
+// The Link made in another file
+import 'package:knowah/models/link.dart';
+
 // The Menu is the first screen the user sees
 // StatelessWidget means it never changes once it is drawn
 class MenuScreen extends StatelessWidget {
@@ -161,14 +164,23 @@ class MenuScreen extends StatelessWidget {
             context,
             MaterialPageRoute(
                 // The screen to show
-                builder: (context) => ItemListScreen(
-                    items: [
-                        Item(title: 'Double Jump', status: ItemStatus.active),
-                        Item(title: 'Level 2'),
-                        Item(title: 'Slime Enemy'),
-                        Item(title: 'Character Floats'),
-                    ],
-                ),
+                builder: (context) {
+                    // Placeholder items, kept in variables so the links can point at them
+                    final doubleJump = Item(title: 'Double Jump', status: ItemStatus.active);
+                    final level2 = Item(title: 'Level 2');
+                    final slime = Item(title: 'Slime Enemy', status: ItemStatus.active);
+                    final floats = Item(title: 'Character Floats');
+
+                    return ItemListScreen(
+                        items: [doubleJump, level2, slime, floats],
+
+                        // Placeholder links
+                        links: [
+                            Link(type: LinkType.introducedIn, from: doubleJump, to: level2),
+                            Link(type: LinkType.relatedTo, from: floats, to: doubleJump),
+                        ],
+                    );
+                },
             ),
         );
     }

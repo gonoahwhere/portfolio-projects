@@ -5,7 +5,7 @@ import 'package:knowah/models/item.dart';
 // An enum is a fixed list of choices, so nobody can type a link type that doesn't exist
 enum LinkType { introducedIn, appearsIn, blocks, fixes, relatedTo }
 
-// A Link joins two items, for example Double Jump 'introduced in' Level 2
+// A Link joins two items, for example Double Jump 'Introduced In' Level 2
 class Link {
     // 'final' means these are set once the Link is created
     final LinkType type;

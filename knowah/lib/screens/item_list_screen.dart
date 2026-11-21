@@ -175,19 +175,19 @@ class _ItemListScreenState extends State<ItemListScreen> {
         return status.name[0].toUpperCase() + status.name.substring(1);
     }
 
-    // Turns a link type like LinkType.introducedIn into the text 'introduced in'
+    // Turns a link type like LinkType.introducedIn into the text 'Introduced In'
     String _linkLabel(LinkType type) {
         switch (type) {
             case LinkType.introducedIn:
-                return 'introduced in';
+                return 'Introduced In';
             case LinkType.appearsIn:
-                return 'appears in';
+                return 'Appears In';
             case LinkType.blocks:
-                return 'blocks';
+                return 'Blocks';
             case LinkType.fixes:
-                return 'fixes';
+                return 'Fixes';
             case LinkType.relatedTo:
-                return 'related to';
+                return 'Related To';
         }
     }
 
@@ -237,7 +237,7 @@ class _ItemListScreenState extends State<ItemListScreen> {
                         for (final link in widget.links.where((l) => l.from == _selected)) ...[
                             const SizedBox(height: 14),
                             Panel3D(
-                                // For example: introduced in → Level 2
+                                // For example: Introduced In → Level 2
                                 child: Text3D('${_linkLabel(link.type)} → ${link.to.title}'),
                             ),
                         ],

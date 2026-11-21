@@ -146,6 +146,14 @@
 - Type: Acceptance
 - Category: Visual
 - Test file: test/models/item_list_screen_test.dart
-- Expected: tapping an item shows its links in the details panel, for example: 'introduced in → Level 2'
+- Expected: tapping an item shows its links in the details panel, for example: 'Introduced In → Level 2'
 - Failed first (Red): A42-links-red
 - Passes now (Green): A43-links-green
+
+## TC17: Narrow details screen shows the status and links
+- Type: Acceptance
+- Category: Visual
+- Test file: test/models/item_list_screen_test.dart
+- Expected: on a narrow window, the details screen shows the item's status and its links
+- Failed first (Red): A45-links-screen-red
+- Passes now (Green): (not built yet)
