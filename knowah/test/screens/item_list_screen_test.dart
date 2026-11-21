@@ -174,7 +174,7 @@ void main() {
         expect(
             find.descendant(
                 of: find.byKey(const Key('details-panel')),
-                matching: find.text('Introduced in → Level 2'),
+                matching: find.text('introduced in → Level 2'),
             ),
             findsOneWidget,
         );

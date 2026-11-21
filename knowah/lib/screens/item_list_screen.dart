@@ -4,6 +4,9 @@ import 'package:material_ui/material_ui.dart';
 // The Item made in another file
 import 'package:knowah/models/item.dart';
 
+// The Link made in another file
+import 'package:knowah/models/link.dart';
+
 // Knowah colours
 import 'package:knowah/themes/app_colours.dart';
 
@@ -24,7 +27,11 @@ class ItemListScreen extends StatefulWidget {
     // The items to show. They are handed in, so the screen doesn't care where they came from
     final List<Item> items;
 
-    const ItemListScreen({super.key, required this.items});
+    // The links between those items, handed in the same way
+    final List<Link> links;
+
+    // links is optional, starts as an empty list, earlier tests still work
+    const ItemListScreen({super.key, required this.items, this.links = const []});
 
     @override
     State<ItemListScreen> createState() => _ItemListScreenState();
@@ -168,6 +175,22 @@ class _ItemListScreenState extends State<ItemListScreen> {
         return status.name[0].toUpperCase() + status.name.substring(1);
     }
 
+    // Turns a link type like LinkType.introducedIn into the text 'introduced in'
+    String _linkLabel(LinkType type) {
+        switch (type) {
+            case LinkType.introducedIn:
+                return 'introduced in';
+            case LinkType.appearsIn:
+                return 'appears in';
+            case LinkType.blocks:
+                return 'blocks';
+            case LinkType.fixes:
+                return 'fixes';
+            case LinkType.relatedTo:
+                return 'related to';
+        }
+    }
+
     // The details panel on the right (PC only)
     Widget _details() {
         return Padding(
@@ -207,6 +230,17 @@ class _ItemListScreenState extends State<ItemListScreen> {
                         Panel3D(
                             child: Text3D(_statusLabel(_selected!.status)),
                         ),
+
+                    // One box for every link that starts from the selected item
+                    // The ... spreads the list of boxes into the children
+                    if (_selected != null)
+                        for (final link in widget.links.where((l) => l.from == _selected)) ...[
+                            const SizedBox(height: 14),
+                            Panel3D(
+                                // For example: introduced in → Level 2
+                                child: Text3D('${_linkLabel(link.type)} → ${link.to.title}'),
+                            ),
+                        ],
                 ],
             ),
         );

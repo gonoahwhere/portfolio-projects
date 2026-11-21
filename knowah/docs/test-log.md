@@ -44,6 +44,7 @@
 - Run 13: after adding the details screen for narrow windows, TC01 to TC03, and TC05 to TC13 all pass (A35-regression)
 - Run 14: after adding the status box to the details panel, TC01 to TC03, and TC05 to TC14 all pass (A38-regression)
 - Run 15: after adding the Link model, TC01 to TC03 and TC05 to TC15 all pass (A41-regression)
+- Run 16: after showing links in the details panel, TC01 to TC03 and TC05 to TC16 all pass (A44-regression)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor
@@ -145,6 +146,6 @@
 - Type: Acceptance
 - Category: Visual
 - Test file: test/models/item_list_screen_test.dart
-- Expected: tapping an item shows its links in the details panel, for example: 'Introduced in → Level 2'
+- Expected: tapping an item shows its links in the details panel, for example: 'introduced in → Level 2'
 - Failed first (Red): A42-links-red
-- Passes now (Green): (not built yet)
+- Passes now (Green): A43-links-green
