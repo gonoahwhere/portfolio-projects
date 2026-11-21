@@ -1,10 +1,8 @@
 // Flutter's ready-made building blocks
 import 'package:material_ui/material_ui.dart';
 
-// The Item made in another file
+// The Item and the Link made in another file
 import 'package:knowah/models/item.dart';
-
-// The Link made in another file
 import 'package:knowah/models/link.dart';
 
 // Knowah colours
@@ -17,6 +15,9 @@ import 'package:knowah/widgets/app_shell.dart';
 import 'package:knowah/widgets/panel_3d.dart';
 import 'package:knowah/widgets/text_3d.dart';
 import 'package:knowah/widgets/button_3d.dart';
+
+// The boxes that describe one item, and the label helpers
+import 'package:knowah/widgets/item_detail_boxes.dart';
 
 // The screen that shows one item on its own
 import 'package:knowah/screens/item_details_screen.dart';
@@ -143,7 +144,7 @@ class _ItemListScreenState extends State<ItemListScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ItemDetailsScreen(item: item),
+                                builder: (context) => ItemDetailsScreen(item: item, links: widget.links),
                             ),
                         );
                     }
@@ -160,35 +161,13 @@ class _ItemListScreenState extends State<ItemListScreen> {
                         ),
                         // The status, in a quieter grey-blue colour
                         Text3D(
-                            _statusLabel(item.status),
+                            statusLabel(item.status),
                             colour: AppColours.textDim,
                         ),
                     ],
                 ),
             ),
         );
-    }
-
-    // Turns a status like ItemStatus.draft into the text 'Draft'
-    String _statusLabel(ItemStatus status) {
-        // status.name is 'draft', so capitilisation is needed for the first letter
-        return status.name[0].toUpperCase() + status.name.substring(1);
-    }
-
-    // Turns a link type like LinkType.introducedIn into the text 'Introduced In'
-    String _linkLabel(LinkType type) {
-        switch (type) {
-            case LinkType.introducedIn:
-                return 'Introduced In';
-            case LinkType.appearsIn:
-                return 'Appears In';
-            case LinkType.blocks:
-                return 'Blocks';
-            case LinkType.fixes:
-                return 'Fixes';
-            case LinkType.relatedTo:
-                return 'Related To';
-        }
     }
 
     // The details panel on the right (PC only)
@@ -204,43 +183,8 @@ class _ItemListScreenState extends State<ItemListScreen> {
                 // Makes each box stretch the full width of the panel
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                    // Small heading, above the boxes
-                    const Text3D(
-                        'ITEM DETAILS',
-                        colour: AppColours.textDim,
-                        fontSize: 14,
-                    ),
-                    const SizedBox(height: 12),
-
-                    // Box 1: the selected item's title, or a message if nothing is selected
-                    Panel3D(
-                        child: Text3D(
-                            colour: AppColours.text,
-                            _selected?.title ?? 'Select an item'
-                        ),
-                    ),
-
-                    // Space between the boxes
-                    // Bigger than 8 so the 3D edges don't touch the next box
-                    const SizedBox(height: 14),
-
-                    // Box 2: the selected item's status
-                    // Only shown once an item has been tapped
-                    if (_selected != null)
-                        Panel3D(
-                            child: Text3D(_statusLabel(_selected!.status)),
-                        ),
-
-                    // One box for every link that starts from the selected item
-                    // The ... spreads the list of boxes into the children
-                    if (_selected != null)
-                        for (final link in widget.links.where((l) => l.from == _selected)) ...[
-                            const SizedBox(height: 14),
-                            Panel3D(
-                                // For example: Introduced In → Level 2
-                                child: Text3D('${_linkLabel(link.type)} → ${link.to.title}'),
-                            ),
-                        ],
+                    // The same boxes the details screen uses
+                    ItemDetailBoxes(item: _selected, links: widget.links),
                 ],
             ),
         );

@@ -1,16 +1,13 @@
 // Flutter's ready-made building blocks
 import 'package:material_ui/material_ui.dart';
 
-// The Item made in another file
+// The Item and the Link made in another file
 import 'package:knowah/models/item.dart';
+import 'package:knowah/models/link.dart';
 
-// Knowah colours
-import 'package:knowah/themes/app_colours.dart';
-
-// The 3D box, text and button
-import 'package:knowah/widgets/panel_3d.dart';
-import 'package:knowah/widgets/text_3d.dart';
+// The 3D button and the shared details boxes
 import 'package:knowah/widgets/button_3d.dart';
+import 'package:knowah/widgets/item_detail_boxes.dart';
 
 // Shows one item on its own screen
 // Used when the window is too narrow for the side panel
@@ -19,7 +16,10 @@ class ItemDetailsScreen extends StatelessWidget {
     // The item to show
     final Item item;
 
-    const ItemDetailsScreen({super.key, required this.item});
+    // All the links, so the screen can show this item's links
+    final List<Link> links;
+
+    const ItemDetailsScreen({super.key, required this.item, this.links = const []});
 
     @override
     Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class ItemDetailsScreen extends StatelessWidget {
             body: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
-                    // The name tag the TC13 test uses to find this screen
+                    // The name tag the TC13 and TC17 tests use to find this screen
                     key: const Key('details-screen'),
                     // Makes each box stretch the full width
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -49,16 +49,8 @@ class ItemDetailsScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 20),
 
-                        // Small heading, above the boxes
-                        const Text3D(
-                            'ITEM DETAILS',
-                            colour: AppColours.textDim,
-                            fontSize: 14,
-                        ),
-                        const SizedBox(height: 12),
-
-                        // Box 1: the item's title
-                        Panel3D(child: Text3D(item.title)), 
+                        // The same boxes the side panel uses
+                        ItemDetailBoxes(item: item, links: links),
                     ],
                 ),
             ),

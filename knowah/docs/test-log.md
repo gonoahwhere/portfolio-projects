@@ -45,6 +45,7 @@
 - Run 14: after adding the status box to the details panel, TC01 to TC03, and TC05 to TC14 all pass (A38-regression)
 - Run 15: after adding the Link model, TC01 to TC03 and TC05 to TC15 all pass (A41-regression)
 - Run 16: after showing links in the details panel, TC01 to TC03 and TC05 to TC16 all pass (A44-regression)
+- Run 17: after adding status and links to the narrow details screen, TC01 to TC03 and TC05 to TC17 all pass (A47-regression)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor
@@ -53,6 +54,8 @@
 - Refactor 3: Text3D so the 3D edge follows the text colour (checked by regression Run 8, A24-refactor)
 - Refactor 4: Details panel split into a heading plus separate boxes (checked by regression Run 9, A25-refactor)
 - Refactor 5: Dividual line between the list and details panel (checked by regression Run 10, A28-regression)
+- Refactor 6: Sidebar logo centred (checked by regression Run 11, A29-regression)
+- Refactor 7: Detail boxes moved into one shared widget used by the side panel and the details screen (checked by regression Run 17, A47-regression)
 
 ## TC05: Item list shows the title of each item
 - Type: Acceptance
@@ -156,4 +159,4 @@
 - Test file: test/models/item_list_screen_test.dart
 - Expected: on a narrow window, the details screen shows the item's status and its links
 - Failed first (Red): A45-links-screen-red
-- Passes now (Green): (not built yet)
+- Passes now (Green): A46-links-screen-green
