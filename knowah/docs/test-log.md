@@ -42,6 +42,7 @@
 - Run 11: after wrapping the Item list in the side sidebar, TC01 to TC03, and TC05 to TC11 all pass (A29-regression)
 - Run 12: after adding the mobile bottom bar, TC01 to TC03, and TC05 to TC12 all pass (A32-regression)
 - Run 13: after adding the details screen for narrow windows, TC01 to TC03, and TC05 to TC13 all pass (A35-regression)
+- Run 14: after adding the status box to the details panel, TC01 to TC03, and TC05 to TC14 all pass (A38-regression)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor
@@ -129,4 +130,4 @@
 - Test file: test/screens/item_list_screen_test.dart
 - Expected: tapping an item shows its status in the details panel
 - Failed first (Red): A36-details-status-red
-- Passes now (Green): (not built yet)
+- Passes now (Green): A37-details-status-green

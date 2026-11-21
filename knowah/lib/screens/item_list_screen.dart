@@ -196,6 +196,17 @@ class _ItemListScreenState extends State<ItemListScreen> {
                             _selected?.title ?? 'Select an item'
                         ),
                     ),
+
+                    // Space between the boxes
+                    // Bigger than 8 so the 3D edges don't touch the next box
+                    const SizedBox(height: 14),
+
+                    // Box 2: the selected item's status
+                    // Only shown once an item has been tapped
+                    if (_selected != null)
+                        Panel3D(
+                            child: Text3D(_statusLabel(_selected!.status)),
+                        ),
                 ],
             ),
         );
