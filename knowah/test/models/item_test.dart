@@ -36,5 +36,22 @@ void main() {
             final active = Item(title: 'Double Jump', status: ItemStatus.active);
             expect(active.status, ItemStatus.active);
         });
+
+        // TC18: every new Item gets its own unique ID
+        test('TC18: Each new Item gets its own unique ID', () {
+            final first = Item(title: 'Double Jump');
+            final second = Item(title: 'Double Jump');
+
+            // The ID is never empty
+            expect(first.id, isNotEmpty);
+            // Two items never share an ID, even with the same title
+            expect(first.id, isNot(second.id));
+        });
+
+        // TC18 (rule): an ID that is given is kept, which is needed when loading from the database
+        test('TC18: An ID that is given is kept', () {
+            final item = Item(title: 'Double Jump', id: 'abc-123');
+            expect(item.id, 'abc-123');
+        });
     });
 }

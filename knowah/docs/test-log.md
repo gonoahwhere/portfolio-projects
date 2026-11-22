@@ -160,3 +160,11 @@
 - Expected: on a narrow window, the details screen shows the item's status and its links
 - Failed first (Red): A45-links-screen-red
 - Passes now (Green): A46-links-screen-green
+
+## TC18: Items get unique IDs, and a given ID is kept
+- Type: Unit
+- Category: Input
+- Test file: test/models/item_test.dart
+- Expected: every new Item gets a non-empty ID that no other item shares, and an ID passed in is kept
+- Failed first (Red): A48-id-red
+- Passes now (Green): (not built yet)
