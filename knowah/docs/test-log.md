@@ -46,6 +46,7 @@
 - Run 15: after adding the Link model, TC01 to TC03 and TC05 to TC15 all pass (A41-regression)
 - Run 16: after showing links in the details panel, TC01 to TC03 and TC05 to TC16 all pass (A44-regression)
 - Run 17: after adding status and links to the narrow details screen, TC01 to TC03 and TC05 to TC17 all pass (A47-regression)
+- Run 18: after adding Item IDs, TC01 to TC03 and TC05 to TC18 all pass (A50-regression)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor
@@ -167,4 +168,4 @@
 - Test file: test/models/item_test.dart
 - Expected: every new Item gets a non-empty ID that no other item shares, and an ID passed in is kept
 - Failed first (Red): A48-id-red
-- Passes now (Green): (not built yet)
+- Passes now (Green): A49-id-green
