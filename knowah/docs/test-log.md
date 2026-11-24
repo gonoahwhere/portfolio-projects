@@ -169,3 +169,11 @@
 - Expected: every new Item gets a non-empty ID that no other item shares, and an ID passed in is kept
 - Failed first (Red): A48-id-red
 - Passes now (Green): A49-id-green
+
+## TC19: Items record when they are created and edited
+- Type: Unit
+- Category: Input
+- Test file: test/models/item_test.dart
+- Expected: a new Item gets a created time and an edited time that match, and any dates passed in are kept
+- Failed first (Red): A51-dates-red
+- Passes now (Green): (not built yet)

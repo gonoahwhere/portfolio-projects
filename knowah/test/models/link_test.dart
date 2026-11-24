@@ -10,9 +10,10 @@ import 'package:knowah/models/link.dart';
 
 void main() {
     // group() bundles related tests together under one name
+    // Group 1: everything about links
     group('Link rules', () {
         // TC15: a link keeps its type and the two items it joins
-        test('TC15: Link keeps its type and both items', () {
+        test('TC15a: Link keeps its type and both items', () {
             final doubleJump = Item(title: 'Double Jump');
             final level2 = Item(title: 'Level 2');
 
@@ -28,7 +29,7 @@ void main() {
         });
 
         // TC15 (rule): an item cannot link to itself
-        test('TC15: Link rejects linking an item to itself', () {
+        test('TC15b: Link rejects linking an item to itself', () {
             final doubleJump = Item(title: 'Double Jump');
 
             // Expect creating this link to throw an error
