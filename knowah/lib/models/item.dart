@@ -13,22 +13,39 @@ class Item {
     final String title;
     final ItemStatus status;
 
+    // When the item was made
+    final DateTime createdAt;
+
+    // When hte Item was last changed (same as createdAt for a new Item)
+    // 'late final' means it is set once, inside teh constructor body below
+    late final DateTime editedAt;
+
     // The constructor runs when Item(title: '...') is written
     // id is optional, a new Item gets a fresh one, and an Item 
     // loaded from the database passes its daved one in
     // The code after the colon is an 'initialiser list': it runs
     // checks before the Item is created
-    Item({String? id, required this.title, this.status = ItemStatus.draft}) : id = id ?? _newId() {
-        // Reject an empty title (rule: title is required)
-        if (title.isEmpty) {
-            throw ArgumentError('Title cannot be empty');
-        }
+    Item({
+        String? id,
+        required this.title,
+        this.status = ItemStatus.draft,
+        DateTime? createdAt,
+        DateTime? editedAt,
+    }) : id = id ?? _newId(),
+        createdAt = createdAt ?? DateTime.now() {
+            // A new Item has not been edited yet, so editedAt starts the same as createdAt
+            this.editedAt = editedAt ?? this.createdAt;
 
-        // Reject a title over 80 characters (rule: max 80)
-        if (title.length > 80) {
-            throw ArgumentError('title cannot be longer than 80 characters');
-        }        
-    }
+            // Reject any empty title (rule: title is required)
+            if (title.isEmpty) {
+                throw ArgumentError('Title cannot be empty');
+            }
+
+            // Reject a title over 80 characters (rule: max 80)
+            if (title.length > 80) {
+                throw ArgumentError('Title cannot be longer than 80 characters');
+            }
+        }
 
     // Makes a new ID from the current time plus a random number
     // The time keeps IDs different over time, the ranodm part keeps two
