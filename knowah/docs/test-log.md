@@ -47,6 +47,7 @@
 - Run 16: after showing links in the details panel, TC01 to TC03 and TC05 to TC16 all pass (A44-regression)
 - Run 17: after adding status and links to the narrow details screen, TC01 to TC03 and TC05 to TC17 all pass (A47-regression)
 - Run 18: after adding Item IDs, TC01 to TC03 and TC05 to TC18 all pass (A50-regression)
+- Run 19: after adding Item dates, TC01 to TC03 and TC05 to TC19 all pass (A53-regression)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor
@@ -176,4 +177,28 @@
 - Test file: test/models/item_test.dart
 - Expected: a new Item gets a created time and an edited time that match, and any dates passed in are kept
 - Failed first (Red): A51-dates-red
-- Passes now (Green): A51-dates-green
+- Passes now (Green): A52-dates-green
+
+## TC20: Project with an empty name is rejected
+- Type: Unit
+- Category: Input
+- Test file: test/models/project_test.dart
+- Expected: creating a Project with an empty name throws an error
+- Failed first (Red): A54-project-red
+- Passes now (Green): (not built yet)
+
+## TC21: Project name over 80 characters is rejected
+- Type: Unit
+- Category: Input
+- Test file: test/models/project_test.dart
+- Expected: creating a Project with a name over 80 characters throws an error
+- Failed first (Red): A54-project-red
+- Passes now (Green): (not built yet)
+
+## TC22: Projects get unique IDs, and a give ID is kept
+- Type: Unit
+- Category: Input
+- Test file: test/models/project_test.dart
+- Expected: every new Project gets a non-empty ID that no other project shares, and an ID passed in is kept
+- Failed first (Red): A54-project-red
+- Passes now (Green): (not built yet)

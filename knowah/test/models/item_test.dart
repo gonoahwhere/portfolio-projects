@@ -1,7 +1,7 @@
 // flutter_test gives us test(), expect() and the checks used below
 import 'package:flutter_test/flutter_test.dart';
 
-// This file does not exist yet, that is the point of TDD
+// This file does not exist yet, that is the purpose of TDD
 // The test is written first, then the code is written to make it pass
 import 'package:knowah/models/item.dart';
 
