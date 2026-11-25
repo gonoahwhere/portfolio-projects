@@ -185,7 +185,7 @@
 - Test file: test/models/project_test.dart
 - Expected: creating a Project with an empty name throws an error
 - Failed first (Red): A54-project-red
-- Passes now (Green): (not built yet)
+- Passes now (Green): A55-project-green
 
 ## TC21: Project name over 80 characters is rejected
 - Type: Unit
@@ -193,7 +193,7 @@
 - Test file: test/models/project_test.dart
 - Expected: creating a Project with a name over 80 characters throws an error
 - Failed first (Red): A54-project-red
-- Passes now (Green): (not built yet)
+- Passes now (Green): A55-project-green
 
 ## TC22: Projects get unique IDs, and a give ID is kept
 - Type: Unit
@@ -201,4 +201,4 @@
 - Test file: test/models/project_test.dart
 - Expected: every new Project gets a non-empty ID that no other project shares, and an ID passed in is kept
 - Failed first (Red): A54-project-red
-- Passes now (Green): (not built yet)
+- Passes now (Green): A55-project-green
