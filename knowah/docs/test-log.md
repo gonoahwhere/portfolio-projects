@@ -48,6 +48,7 @@
 - Run 17: after adding status and links to the narrow details screen, TC01 to TC03 and TC05 to TC17 all pass (A47-regression)
 - Run 18: after adding Item IDs, TC01 to TC03 and TC05 to TC18 all pass (A50-regression)
 - Run 19: after adding Item dates, TC01 to TC03 and TC05 to TC19 all pass (A53-regression)
+- Run 20: end of the Project and database group, TC01 to TC03 and TC05 to TC25 all pass (A58-regression)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor
@@ -202,3 +203,27 @@
 - Expected: every new Project gets a non-empty ID that no other project shares, and an ID passed in is kept
 - Failed first (Red): A54-project-red
 - Passes now (Green): A55-project-green
+
+## TC23: A saved project can be found again
+- Type: Unit
+- Category: System Status
+- Test file: test/database/project_db_test.dart
+- Expected: after saving a project to the database, it appears in the list of all projects and can be fetched by its ID
+- Failed first (Red): A56-database-red
+- Passes now (Green): A57-database-green
+
+## TC24: Saving a project with an existing ID replaces it
+- Type: Unit
+- Category: System Status
+- Test file: test/database/project_db_test.dart
+- Expected: saving a project whose ID is already stored replaces the old one, with no duplicate
+- Failed first (Red): A56-database-red
+- Passes now (Green): A57-database-green
+
+## TC25: A deleted project is gone
+- Type: Unit
+- Category: System Status
+- Test file: test/database/project_db_test.dart
+- Expected: after deleting a project by ID, it no longer appears in the list of all projects
+- Failed first (Red): A56-database-red
+- Passes now (Green): A57-database-green

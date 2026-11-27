@@ -22,7 +22,7 @@ class Item {
 
     // The constructor runs when Item(title: '...') is written
     // id is optional, a new Item gets a fresh one, and an Item 
-    // loaded from the database passes its daved one in
+    // loaded from the database passes its saved one in
     // The code after the colon is an 'initialiser list': it runs
     // checks before the Item is created
     Item({
