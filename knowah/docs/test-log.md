@@ -260,3 +260,19 @@
 - Expected: pressing Create with an empty name shows 'Name cannot be empty', keeps the pop up open and saves nothing
 - Failed first (Red): A66-empty-name-red
 - Passes now (Green): A67-empty-name-green
+
+## TC29: Item keeps the project ID it is given
+- Type: Unit
+- Category: Input
+- Test file: test/models/item_test.dart
+- Expected: an Item created wtih a project ID returns that same project ID
+- Failed first (Red): A70-item-project-red
+- Passes now (Green): A71-item-project-green
+
+## TC30: An item saves to teh database and loads again, an an item without a project is refused
+- Type: Unit
+- Category: System Status
+- Test file: test/database/item_db_test.dart
+- Expected: a saved item comes back with the same ID, title, status and project ID, and saving an item with no project throws an error
+- Failed first (Red): A72-item-db-red
+- Passes now (Green): A73-item-db-green

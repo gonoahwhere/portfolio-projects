@@ -20,6 +20,10 @@ class Item {
     // 'late final' means it is set once, inside teh constructor body below
     late final DateTime editedAt;
 
+    // Which project this Item belongs to
+    // The ? means it can be empty, as previous code creates Items without one
+    final String? projectId;
+
     // The constructor runs when Item(title: '...') is written
     // id is optional, a new Item gets a fresh one, and an Item 
     // loaded from the database passes its saved one in
@@ -31,6 +35,7 @@ class Item {
         this.status = ItemStatus.draft,
         DateTime? createdAt,
         DateTime? editedAt,
+        this.projectId,
     }) : id = id ?? _newId(),
         createdAt = createdAt ?? DateTime.now() {
             // A new Item has not been edited yet, so editedAt starts the same as createdAt

@@ -90,4 +90,17 @@ void main() {
             expect(item.editedAt, later);
         });
     });
+
+    // Group 5: everything about which project an Item belongs to
+    group('Item project rules', () {
+        // TC29: an Item remembers which project it belongs to
+        test('TC29: Item keeps the project Id it is given', () {
+            // The project ID is the same kind of text as a Project's id
+            // Passing it in links this Item to that Project
+            final item = Item(title: 'Double Jump', projectId: 'project-1');
+
+            // The Item should pass back the same project ID it was given
+            expect(item.projectId, 'project-1');
+        });
+    });
 }
