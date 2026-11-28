@@ -1,10 +1,12 @@
 // Imports Flutter's ready-made building blocks
 import 'package:material_ui/material_ui.dart';
 
-// Knowahs colours, the 3D text helper and the 3D button
+// Knowahs colours, the 3D helpers
 import 'package:knowah/themes/app_colours.dart';
 import 'package:knowah/themes/effects.dart';
 import 'package:knowah/widgets/button_3d.dart';
+import 'package:knowah/widgets/panel_3d.dart';
+import 'package:knowah/widgets/text_3d.dart';
 
 // The Item and the screen we are moving to
 import 'package:knowah/models/item.dart';
@@ -18,6 +20,8 @@ import 'package:knowah/models/project.dart';
 
 // The Link made in another file
 import 'package:knowah/models/link.dart';
+
+
 
 // The Menu is the first screen the user sees
 // StatefulWidget because it changes while the app runs (the list of projects load in)
@@ -72,43 +76,118 @@ class _MenuScreenState extends State<MenuScreen> {
             // StatefulBuilder gives the pop up its own setState, so it can redraw it
             builder: (context) => StatefulBuilder(
                 builder: (context, setDialogState) => AlertDialog(
-                    // The heading of the pop up
-                    title: const Text('New Project'),
-                    // The text box where the name is typed
-                    content: TextField(
-                        // The cursor starts in the box
-                        autofocus: true,
-                        decoration: InputDecoration(
-                            hintText: 'Project name',
-                            errorText: errorText,
+                    // Make the AlertDialog itself invisible so only our own 3D panel shows
+                    backgroundColor: Colors.transparent,
+                    elevation: 0,
+                    surfaceTintColor: Colors.transparent,
+                    // No built in padding, our panel does its own
+                    contentPadding: EdgeInsets.zero,
+                    content: SizedBox(
+                        // A fixed width, so the pop up doesn't stretch or squash
+                        width: 380,
+                        child: Padding(
+                            // Room on the right and bottom for the 3D edge
+                            padding: const EdgeInsets.only(right: 5, bottom: 5),
+                            child: Panel3D(
+                                // More space inside than a list row has
+                                padding: const EdgeInsets.all(24),
+                                child: Column(
+                                    // Only as tall as its contents
+                                    mainAxisSize: MainAxisSize.min,
+                                    // Stretches the text box and buttons to the full width
+                                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                                    children: [
+                                        // The heading, centred
+                                        const Center(
+                                            child: Text3D(
+                                                'NEW PROJECT',
+                                                colour: AppColours.textDim,
+                                                fontSize: 14,
+                                            ),
+                                        ),
+                                        const SizedBox(height: 16),
+
+                                        // The text box where the name is typed
+                                        TextField(
+                                            // The cursor starts inside the box
+                                            autofocus: true,
+                                            // The colour of the text being typed
+                                            style: const TextStyle(color: AppColours.text),
+                                            decoration: InputDecoration(
+                                                hintText: 'Project name',
+                                                hintStyle: const TextStyle(color: AppColours.textFaint),
+                                                // errorText shows the message under the box, nothing if it is null
+                                                errorText: errorText,
+                                                // The box border, slightly rounded, like the buttons
+                                                enabledBorder: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(4),
+                                                    borderSide: BorderSide(
+                                                        color: AppColours.textDim.withValues(alpha: 0.5),
+                                                    ),
+                                                ),
+
+                                                // Cyan while the cursor is inside the box
+                                                focusedBorder: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(4),
+                                                    borderSide: const BorderSide(color: AppColours.cyan),
+                                                ),
+
+                                                // Red when there is an error message
+                                                errorBorder: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(4),
+                                                    borderSide: const BorderSide(color: AppColours.red),
+                                                ),
+                                                focusedErrorBorder: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(4),
+                                                    borderSide: const BorderSide(color: AppColours.red),
+                                                ),
+                                            ),
+                                            // onChanged runs every time the user types, keeping the latest text
+                                            onChanged: (value) => enteredName = value,
+                                        ),
+                                        const SizedBox(height: 24),
+
+                                        // The two buttons, side by size
+                                        Row(
+                                            children: [
+                                                // Expanded gives each button an equal share of the width
+                                                Expanded(
+                                                    // Create checks the name, then closes the pop up and passes it back
+                                                    child: Button3D(
+                                                        label: 'Create',
+                                                        cyan: true,
+                                                        onPressed: () {
+                                                            // try: attempt to make a Project, which runs the name rules
+                                                            try {
+                                                                Project(name: enteredName);
+                                                                // No error, so the name is fine, close the pop up
+                                                                Navigator.pop(context, enteredName);
+                                                            } on ArgumentError catch (error) {
+                                                                // catch: the name broke a rule, so show its message
+                                                                // and keep the pop up open
+                                                                setDialogState(() => errorText = error.message.toString());
+                                                            }
+                                                        },
+                                                    ),
+                                                ),
+
+                                                // A gap wider than the 3D edge, so the buttons don't touch
+                                                const SizedBox(width: 20),
+                                                Expanded(
+                                                    // Cancel closes the pop up and passes back nothing (null)
+                                                    child: Button3D(
+                                                        label: 'Cancel',
+                                                        red: true,
+                                                        onPressed: () => Navigator.pop(context),
+                                                    ),
+                                                ),
+                                            ],
+                                        ),
+                                    ],
+                                ),
+                            ),
                         ),
-                        // onChanged runs every time the user types, keeping the latest text
-                        onChanged: (value) => enteredName = value,
                     ),
-                    actions: [
-                        // Create checks the name, closes the pop up and passes back the typed name
-                        Button3D(
-                            cyan: true,
-                            label: 'Create',
-                            onPressed: () {
-                                // try: attempt to make a Project, which runs the name rules
-                                try {
-                                    Project(name: enteredName);
-                                    // No error, so the name is fine, close the pop up
-                                } on ArgumentError catch (error) {
-                                    // catch: the name broke a rule, so show its message
-                                    // and keep the pop up open
-                                    setDialogState(() => errorText = error.message.toString());
-                                }
-                            },
-                        ),
-                        // Cancel closes the pop up and passes back nothing (null)
-                        Button3D(
-                            red: true,
-                            label: 'Cancel',
-                            onPressed: () => Navigator.pop(context),
-                        ),
-                    ],
                 ),
             ),
         );

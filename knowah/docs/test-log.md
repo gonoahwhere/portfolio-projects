@@ -51,6 +51,7 @@
 - Run 20: end of the Project and database group, TC01 to TC03 and TC05 to TC25 all pass (A58-regression)
 - Run 21: after the Menu started loading projects from the database, TC03, TC06 and TC07 stopped compiling (A61-regression-fail) and were updated to give the Menu a database, all tests now pass (A62-regression)
 - Run 22: end of the Menu and projects group, TC01 to TC03 and TC05 to TC28 all pass (A68-regression)
+- Run 23: after restyling the New Project pop up, TC01 to TC03 and TC05 to TC28 all pass (A69-refactor)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor
@@ -61,6 +62,7 @@
 - Refactor 5: Dividual line between the list and details panel (checked by regression Run 10, A28-regression)
 - Refactor 6: Sidebar logo centred (checked by regression Run 11, A29-regression)
 - Refactor 7: Detail boxes moved into one shared widget used by the side panel and the details screen (checked by regression Run 17, A47-regression)
+- Refactor 8: New Project pop up restyled with Panel3D, Button3D and Text3D to match the rest of the app (checked by regression Run 23, A69-refactor)
 
 ## Manual Check: Projects survive closing and reopening the app
 - Type: Acceptance
