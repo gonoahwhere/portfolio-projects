@@ -50,6 +50,7 @@
 - Run 19: after adding Item dates, TC01 to TC03 and TC05 to TC19 all pass (A53-regression)
 - Run 20: end of the Project and database group, TC01 to TC03 and TC05 to TC25 all pass (A58-regression)
 - Run 21: after the Menu started loading projects from the database, TC03, TC06 and TC07 stopped compiling (A61-regression-fail) and were updated to give the Menu a database, all tests now pass (A62-regression)
+- Run 22: end of the Menu and projects group, TC01 to TC03 and TC05 to TC28 all pass (A68-regression)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor
@@ -60,6 +61,11 @@
 - Refactor 5: Dividual line between the list and details panel (checked by regression Run 10, A28-regression)
 - Refactor 6: Sidebar logo centred (checked by regression Run 11, A29-regression)
 - Refactor 7: Detail boxes moved into one shared widget used by the side panel and the details screen (checked by regression Run 17, A47-regression)
+
+## Manual Check: Projects survive closing and reopening the app
+- Type: Acceptance
+- Steps: create a project, stop the app, run it again
+- Result: the project is still in the recent list (A65-perist)
 
 ## TC05: Item list shows the title of each item
 - Type: Acceptance
@@ -236,3 +242,19 @@
 - Expected: projects saved in the database appear as the recent projects on the Menu
 - Failed first (Red): A59-menu-db-red
 - Passes now (Green): A60-menu-db-green
+
+## TC27: Creating a new project adds it to the recent projects
+- Type: Acceptance
+- Category: Input
+- Test file: test/screens/menu_new_project_test.dart
+- Expected: pressing + New Project, typing a name and pressing Create saves the project, and it appears in the recent projects
+- Failed first (Red): A63-new-project-red
+- Passes now (Green): A64-new-project-green
+
+## TC28: An empty project name shows a message and saves nothing
+- Type: Acceptance
+- Category: Input
+- Test file: test/screens/menu_new_project_test.dart
+- Expected: pressing Create with an empty name shows 'Name cannot be empty', keeps the pop up open and saves nothing
+- Failed first (Red): A66-empty-name-red
+- Passes now (Green): A67-empty-name-green

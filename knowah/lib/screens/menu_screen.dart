@@ -56,6 +56,73 @@ class _MenuScreenState extends State<MenuScreen> {
         setState(() => _projects = projects);
     }
 
+    // Asks for a project name in a po up, saves the project, then reloads teh list
+    Future<void> _newProject() async {
+        // Holds whatever the user types, empty until something is typed
+        String enteredName = '';
+
+        // The message shown under the text box (null means no message)
+        // It lives out here so it is remembered when the pop up redraws
+        String? errorText;
+
+        // showDialog opens the pop up, and 'await' waits until it is closed
+        // The answer is whatever the pop up was closed with, or null if Cancel was pressed
+        final String? name = await showDialog<String>(
+            context: context,
+            // StatefulBuilder gives the pop up its own setState, so it can redraw it
+            builder: (context) => StatefulBuilder(
+                builder: (context, setDialogState) => AlertDialog(
+                    // The heading of the pop up
+                    title: const Text('New Project'),
+                    // The text box where the name is typed
+                    content: TextField(
+                        // The cursor starts in the box
+                        autofocus: true,
+                        decoration: InputDecoration(
+                            hintText: 'Project name',
+                            errorText: errorText,
+                        ),
+                        // onChanged runs every time the user types, keeping the latest text
+                        onChanged: (value) => enteredName = value,
+                    ),
+                    actions: [
+                        // Create checks the name, closes the pop up and passes back the typed name
+                        Button3D(
+                            cyan: true,
+                            label: 'Create',
+                            onPressed: () {
+                                // try: attempt to make a Project, which runs the name rules
+                                try {
+                                    Project(name: enteredName);
+                                    // No error, so the name is fine, close the pop up
+                                } on ArgumentError catch (error) {
+                                    // catch: the name broke a rule, so show its message
+                                    // and keep the pop up open
+                                    setDialogState(() => errorText = error.message.toString());
+                                }
+                            },
+                        ),
+                        // Cancel closes the pop up and passes back nothing (null)
+                        Button3D(
+                            red: true,
+                            label: 'Cancel',
+                            onPressed: () => Navigator.pop(context),
+                        ),
+                    ],
+                ),
+            ),
+        );
+
+        // null means Cancel was pressed, so there is nothing to save
+        if (name == null) return;
+
+        // Save the new project, Project makes its own ID and checks the name
+        await widget.database.saveProject(Project(name: name));
+
+        // Reload the list so the new project appears
+        await _loadProjects();
+    }
+
     @override
     Widget build(BuildContext context) {
         // Scaffold is a blank page
@@ -129,9 +196,9 @@ class _MenuScreenState extends State<MenuScreen> {
 
                                                 // Button 1 - New Project, onPressed does nothing yet (empty function)
                                                 Button3D(
-                                                    filled: true,
+                                                    cyan: true,
                                                     label: '+ New Project',
-                                                    onPressed: () {},
+                                                    onPressed: _newProject,
                                                 ),
                                                 const SizedBox(height: 14),
 

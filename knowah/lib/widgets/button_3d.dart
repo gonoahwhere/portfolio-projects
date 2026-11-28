@@ -18,13 +18,17 @@ class Button3D extends StatefulWidget {
     final VoidCallback onPressed;
 
     // true = main cyan button, false = quieter grey-blue button
-    final bool filled;
+    final bool cyan;
+
+    // true = red button, used for actions like Cancel
+    final bool red;
 
     const Button3D({
         super.key,
         required this.label,
         required this.onPressed,
-        this.filled = false,
+        this.cyan = false,
+        this.red = false
     });
 
     @override
@@ -42,9 +46,9 @@ class _Button3DState extends State<Button3D> {
 
     @override
     Widget build(BuildContext context) {
-        // Pick the colours: cyan for the main button, grey-blue for the rest
-        final Color accent = widget.filled ? AppColours.cyan : AppColours.textDim;
-        final Color edge = widget.filled ? AppColours.cyanShadow : AppColours.textDimShadow;
+        // Pick the colours: red takes priority, then cyan, then grey-blue
+        final Color accent = widget.red ? AppColours.red : widget.cyan ? AppColours.cyan : AppColours.textDim;
+        final Color edge = widget.red ? AppColours.redShadow : widget.cyan ? AppColours.cyanShadow : AppColours.textDimShadow;
 
         // GestureDetector listens for clicks, since the button is custom made
         return GestureDetector(
@@ -75,9 +79,15 @@ class _Button3DState extends State<Button3D> {
                 // Keeps the label in the middle
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                    // Solid fill so that the 3D edge can't show through
-                    // The main button gets a faint cyan tint on top of the background
-                    color: widget.filled
+                // Solid fill so that the 3D edge can't show through
+                // The main button gets a faint cyan tint on top of the background
+                // Buttons such as Cancel are red
+                color: widget.red
+                    ? Color.alphaBlend(
+                        AppColours.red.withValues(alpha: 0.1),
+                        AppColours.background,
+                    )
+                    : widget.cyan
                         ? Color.alphaBlend(
                             AppColours.cyan.withValues(alpha: 0.1),
                             AppColours.background,
