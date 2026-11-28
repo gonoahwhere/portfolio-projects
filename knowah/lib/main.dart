@@ -7,14 +7,21 @@ import 'package:knowah/screens/menu_screen.dart';
 // Knowahs colours
 import 'package:knowah/themes/app_colours.dart';
 
+// The database the whole app shares
+import 'package:knowah/database/app_db.dart';
+
 // main() is where every Dart program starts
 // runApp() tells Flutter which widget to show first
-void main() => runApp(const KnowahApp());
+// Make a single dataase when the app starts, and pass it to the app
+void main() => runApp(KnowahApp(database: AppDB()));
 
 // A widget is any piece of the screen
 // StatelessWidget means it never changes once it is drawn
 class KnowahApp extends StatelessWidget {
-    const KnowahApp({super.key});
+    // Thge database every screen will use
+    final AppDB database;
+
+    const KnowahApp({super.key, required this.database});
 
     // build() describes what this widget looks like
     @override
@@ -81,7 +88,7 @@ class KnowahApp extends StatelessWidget {
                     ),
                 ),
             ),
-            home: const MenuScreen(),
+            home: MenuScreen(database: database),
         );
     }
 }

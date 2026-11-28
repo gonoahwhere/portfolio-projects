@@ -10,13 +10,51 @@ import 'package:knowah/widgets/button_3d.dart';
 import 'package:knowah/models/item.dart';
 import 'package:knowah/screens/item_list_screen.dart';
 
+// The database the Menu reads its projects from
+import 'package:knowah/database/app_db.dart';
+
+// The Project that comes back from the database
+import 'package:knowah/models/project.dart';
+
 // The Link made in another file
 import 'package:knowah/models/link.dart';
 
 // The Menu is the first screen the user sees
-// StatelessWidget means it never changes once it is drawn
-class MenuScreen extends StatelessWidget {
-    const MenuScreen({super.key});
+// StatefulWidget because it changes while the app runs (the list of projects load in)
+class MenuScreen extends StatefulWidget {
+    // The database to read the projects from, passed in by whoever shows the Menu
+    final AppDB database;
+
+    const MenuScreen({super.key, required this.database});
+
+    @override
+    State<MenuScreen> createState() => _MenuScreenState();
+}
+
+// This is the part that remembers the loaded projects
+class _MenuScreenState extends State<MenuScreen> {
+    // The projects shown in the recent list (empty until the database answers)
+    List<Project> _projects = [];
+
+    // initState runs once, when the screen is first created
+    @override
+    void initState() {
+        super.initState();
+        // Start loading the projects
+        _loadProjects();
+    }
+
+    // Asks the database for every project, then redraws the screen with them
+    Future<void> _loadProjects() async {
+        // widget.database reaches the database field on MenuScreen above
+        final projects = await widget.database.getAllProjects();
+
+        // 'mounted' is false is the screen went away while waiting
+        if (!mounted) return;
+
+        // setState puts the projects in the list and redraws the scene
+        setState(() => _projects = projects);
+    }
 
     @override
     Widget build(BuildContext context) {
@@ -126,24 +164,16 @@ class MenuScreen extends StatelessWidget {
                                                 ),
                                                 const SizedBox(height: 4),
 
-                                                // Example games for Recent Projects
-                                                Button3D(
-                                                    label: 'Side-Scroller',
-                                                    onPressed: () => _openProject(context),
-                                                ),
-                                                const SizedBox(height: 14),
-
-                                                Button3D(
-                                                    label: 'Card Battler',
-                                                    onPressed: () => _openProject(context),
-                                                ),
-                                                const SizedBox(height: 14),
-
-                                                Button3D(
-                                                    label: 'Maze Runner',
-                                                    onPressed: () => _openProject(context),
-                                                ),
-                                                const SizedBox(height: 14),
+                                                // One button for every project loaded in from the database
+                                                // The ...[ ] puts a button and its spacing into the list together
+                                                for (final project in _projects) ... [
+                                                    Button3D(
+                                                        // The project's name is the button's text
+                                                        label: project.name,
+                                                        onPressed: () => _openProject(context),
+                                                    ),
+                                                    const SizedBox(height: 14),
+                                                ]
                                             ],
                                         ),
                                     ),

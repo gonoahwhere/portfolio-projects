@@ -49,6 +49,7 @@
 - Run 18: after adding Item IDs, TC01 to TC03 and TC05 to TC18 all pass (A50-regression)
 - Run 19: after adding Item dates, TC01 to TC03 and TC05 to TC19 all pass (A53-regression)
 - Run 20: end of the Project and database group, TC01 to TC03 and TC05 to TC25 all pass (A58-regression)
+- Run 21: after the Menu started loading projects from the database, TC03, TC06 and TC07 stopped compiling (A61-regression-fail) and were updated to give the Menu a database, all tests now pass (A62-regression)
 - Repeat after each new screen or feature
 
 ## Refactors: Third step of Red, Green, Refactor
@@ -227,3 +228,11 @@
 - Expected: after deleting a project by ID, it no longer appears in the list of all projects
 - Failed first (Red): A56-database-red
 - Passes now (Green): A57-database-green
+
+## TC26: Recent projects on the Menu come from the database
+- Type: Acceptance
+- Category: Visual
+- Test file: test/screens/menu_recent_projects_test.dart
+- Expected: projects saved in the database appear as the recent projects on the Menu
+- Failed first (Red): A59-menu-db-red
+- Passes now (Green): A60-menu-db-green
